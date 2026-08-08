@@ -117,3 +117,9 @@ git add -A && git commit -m "add: meu-programa" && git push
 
 Vários itens rodam `curl | sh` de fornecedores oficiais (Ollama, Tailscale,
 Netdata, nvm). Sempre rode com `--dry-run` primeiro e leia o que vai executar.
+
+## Verificação
+
+```bash
+bash tools/verify.sh   # 22 checagens: sintaxe, manifesto, geradores, flags do install.py, segredos
+```
