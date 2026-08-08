@@ -1,0 +1,398 @@
+# =====================================================================
+# Manifesto único de programas usados pelo Pedro (pedroiff0)
+# ---------------------------------------------------------------------
+# Cada item tem:
+#   name        : nome legível
+#   desc        : para que serve
+#   tags        : grupos (usado por `--group`)
+#   linux       : como instalar no Linux. Chaves possíveis:
+#                   apt / dnf / pacman / zypper  -> nome do pacote na distro
+#                   flatpak                      -> app id
+#                   snap                         -> nome (+ classic: true)
+#                   script                       -> comando shell (último recurso)
+#                   repo                         -> comandos p/ adicionar repositório antes
+#                   post                         -> comando pós-instalação
+#   windows     : id do winget (ou {script: ...})
+#   macos       : {brew: nome} ou {cask: nome}
+#
+# Se a chave da distro não existir, o instalador tenta flatpak -> snap -> script.
+# =====================================================================
+
+packages:
+
+  # ---------------- base / cli ----------------
+  - name: build-essential
+    desc: Compiladores e headers de C/C++
+    tags: [base, dev]
+    linux: {apt: build-essential, dnf: "@development-tools", pacman: base-devel, zypper: patterns-devel-base-devel_basis}
+
+  - name: git
+    desc: Controle de versão
+    tags: [base, dev]
+    linux: {apt: git, dnf: git, pacman: git, zypper: git}
+    windows: Git.Git
+    macos: {brew: git}
+
+  - name: git-lfs
+    desc: Arquivos grandes no git
+    tags: [dev]
+    linux: {apt: git-lfs, dnf: git-lfs, pacman: git-lfs, zypper: git-lfs}
+    windows: GitHub.GitLFS
+    macos: {brew: git-lfs}
+
+  - name: gh
+    desc: GitHub CLI
+    tags: [base, dev]
+    linux:
+      apt: gh
+      dnf: gh
+      pacman: github-cli
+      repo:
+        apt: |
+          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+            | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+          sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" \
+            | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
+    windows: GitHub.cli
+    macos: {brew: gh}
+
+  - name: curl
+    desc: Transferência HTTP na linha de comando
+    tags: [base]
+    linux: {apt: curl, dnf: curl, pacman: curl, zypper: curl}
+    windows: cURL.cURL
+    macos: {brew: curl}
+
+  - name: wget
+    desc: Downloader
+    tags: [base]
+    linux: {apt: wget, dnf: wget, pacman: wget, zypper: wget}
+    macos: {brew: wget}
+
+  - name: ripgrep
+    desc: Busca em arquivos ultra-rápida (rg)
+    tags: [base, dev]
+    linux: {apt: ripgrep, dnf: ripgrep, pacman: ripgrep, zypper: ripgrep}
+    windows: BurntSushi.ripgrep.MSVC
+    macos: {brew: ripgrep}
+
+  - name: htop
+    desc: Monitor de processos
+    tags: [base, sysadmin]
+    linux: {apt: htop, dnf: htop, pacman: htop, zypper: htop}
+    macos: {brew: htop}
+
+  - name: btop
+    desc: Monitor de recursos bonito
+    tags: [sysadmin]
+    linux: {apt: btop, dnf: btop, pacman: btop, zypper: btop}
+    macos: {brew: btop}
+
+  - name: tmux
+    desc: Multiplexador de terminal
+    tags: [base, dev]
+    linux: {apt: tmux, dnf: tmux, pacman: tmux, zypper: tmux}
+    macos: {brew: tmux}
+
+  - name: nano
+    desc: Editor de texto simples
+    tags: [base]
+    linux: {apt: nano, dnf: nano, pacman: nano, zypper: nano}
+
+  - name: zip
+    desc: Compactação zip/unzip
+    tags: [base]
+    linux: {apt: zip, dnf: zip, pacman: zip, zypper: zip}
+
+  - name: xclip
+    desc: Clipboard pela CLI (X11)
+    tags: [base]
+    linux: {apt: xclip, dnf: xclip, pacman: xclip, zypper: xclip}
+
+  - name: ufw
+    desc: Firewall simples
+    tags: [sysadmin, security]
+    linux: {apt: ufw, dnf: ufw, pacman: ufw, zypper: ufw}
+
+  - name: samba
+    desc: Compartilhamento de arquivos SMB
+    tags: [sysadmin, rede]
+    linux: {apt: samba, dnf: samba, pacman: samba, zypper: samba}
+
+  - name: nftables
+    desc: Firewall do kernel
+    tags: [sysadmin, rede]
+    linux: {apt: nftables, dnf: nftables, pacman: nftables, zypper: nftables}
+
+  # ---------------- linguagens / runtime ----------------
+  - name: python3-dev
+    desc: Headers do Python para compilar extensões
+    tags: [dev, python]
+    linux: {apt: python3-dev, dnf: python3-devel, pacman: python, zypper: python3-devel}
+
+  - name: python3-pip
+    desc: Gerenciador de pacotes Python
+    tags: [dev, python]
+    linux: {apt: python3-pip, dnf: python3-pip, pacman: python-pip, zypper: python3-pip}
+    windows: Python.Python.3.12
+    macos: {brew: python}
+
+  - name: python3-venv
+    desc: Ambientes virtuais (Debian PEP 668)
+    tags: [dev, python]
+    linux: {apt: python3-venv, dnf: python3-virtualenv, pacman: python-virtualenv}
+
+  - name: nodejs
+    desc: Runtime JavaScript (via nvm, versão LTS)
+    tags: [dev, js]
+    linux:
+      script: |
+        if ! command -v nvm >/dev/null && [ ! -d "$HOME/.nvm" ]; then
+          curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+        fi
+        export NVM_DIR="$HOME/.nvm"; . "$NVM_DIR/nvm.sh"
+        nvm install --lts
+    windows: OpenJS.NodeJS.LTS
+    macos: {brew: node}
+
+  # ---------------- containers / infra ----------------
+  - name: docker
+    desc: Containers
+    tags: [dev, infra]
+    linux:
+      apt: docker.io
+      dnf: moby-engine
+      pacman: docker
+      zypper: docker
+      post: |
+        sudo systemctl enable --now docker
+        sudo usermod -aG docker "$USER"
+    windows: Docker.DockerDesktop
+    macos: {cask: docker}
+
+  - name: docker-compose
+    desc: Orquestração local de containers
+    tags: [dev, infra]
+    linux: {apt: docker-compose, dnf: docker-compose, pacman: docker-compose, zypper: docker-compose}
+
+  - name: caddy
+    desc: Servidor web / reverse proxy com HTTPS automático
+    tags: [infra, web]
+    linux:
+      apt: caddy
+      dnf: caddy
+      pacman: caddy
+      repo:
+        apt: |
+          curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \
+            | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+          curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \
+            | sudo tee /etc/apt/sources.list.d/caddy-stable.list >/dev/null
+    macos: {brew: caddy}
+
+  - name: tailscale
+    desc: VPN mesh
+    tags: [rede, infra]
+    linux:
+      script: curl -fsSL https://tailscale.com/install.sh | sh
+    windows: tailscale.tailscale
+    macos: {cask: tailscale}
+
+  - name: syncthing
+    desc: Sincronização de arquivos P2P
+    tags: [infra, arquivos]
+    linux: {apt: syncthing, dnf: syncthing, pacman: syncthing, zypper: syncthing}
+    windows: Syncthing.Syncthing
+    macos: {brew: syncthing}
+
+  - name: netdata
+    desc: Monitoramento em tempo real
+    tags: [sysadmin]
+    linux:
+      script: curl -fsSL https://get.netdata.cloud/kickstart.sh | sh -s -- --non-interactive
+
+  # ---------------- IA / ML ----------------
+  - name: ollama
+    desc: Rodar LLMs localmente
+    tags: [ia]
+    linux:
+      script: curl -fsSL https://ollama.com/install.sh | sh
+    windows: Ollama.Ollama
+    macos: {cask: ollama}
+
+  - name: nvidia-driver
+    desc: Driver proprietário NVIDIA (GTX 1660)
+    tags: [gpu, driver]
+    linux:
+      apt: nvidia-driver
+      dnf: akmod-nvidia
+      pacman: nvidia
+      post: 'echo "Reinicie apos instalar o driver. Verifique com nvidia-smi"'
+
+  - name: cuda-keyring
+    desc: Repositório CUDA da NVIDIA
+    tags: [gpu, ia]
+    linux: {apt: cuda-keyring}
+
+  # ---------------- navegadores ----------------
+  - name: google-chrome
+    desc: Navegador Chrome
+    tags: [navegador]
+    linux:
+      apt: google-chrome-stable
+      dnf: google-chrome-stable
+      pacman: google-chrome
+      repo:
+        apt: |
+          curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \
+            | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg
+          echo "deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main" \
+            | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null
+    windows: Google.Chrome
+    macos: {cask: google-chrome}
+
+  - name: firefox
+    desc: Navegador Firefox
+    tags: [navegador]
+    linux: {apt: firefox-esr, dnf: firefox, pacman: firefox, zypper: MozillaFirefox, flatpak: org.mozilla.firefox}
+    windows: Mozilla.Firefox
+    macos: {cask: firefox}
+
+  # ---------------- produtividade / escritório ----------------
+  - name: obsidian
+    desc: Notas em Markdown / vault
+    tags: [notas, produtividade]
+    linux: {flatpak: md.obsidian.Obsidian, apt: obsidian}
+    windows: Obsidian.Obsidian
+    macos: {cask: obsidian}
+
+  - name: libreoffice
+    desc: Suíte de escritório
+    tags: [escritorio]
+    linux: {apt: libreoffice, dnf: libreoffice, pacman: libreoffice-fresh, zypper: libreoffice}
+    windows: TheDocumentFoundation.LibreOffice
+    macos: {cask: libreoffice}
+
+  - name: onlyoffice
+    desc: Editor compatível com MS Office
+    tags: [escritorio]
+    linux: {flatpak: org.onlyoffice.desktopeditors, apt: onlyoffice-desktopeditors}
+    windows: ONLYOFFICE.DesktopEditors
+    macos: {cask: onlyoffice}
+
+  - name: texlive-full
+    desc: Distribuição LaTeX completa (CV, artigos)
+    tags: [latex, escritorio]
+    linux: {apt: texlive-full, dnf: texlive-scheme-full, pacman: texlive-meta, zypper: texlive-scheme-full}
+    windows: MiKTeX.MiKTeX
+    macos: {cask: mactex}
+
+  - name: latexmk
+    desc: Build automático de LaTeX
+    tags: [latex]
+    linux: {apt: latexmk, dnf: latexmk, pacman: texlive-binextra}
+
+  # ---------------- mídia / design ----------------
+  - name: ffmpeg
+    desc: Conversão de áudio e vídeo
+    tags: [midia]
+    linux: {apt: ffmpeg, dnf: ffmpeg, pacman: ffmpeg, zypper: ffmpeg}
+    windows: Gyan.FFmpeg
+    macos: {brew: ffmpeg}
+
+  - name: inkscape
+    desc: Editor de vetores SVG
+    tags: [design]
+    linux: {apt: inkscape, dnf: inkscape, pacman: inkscape, flatpak: org.inkscape.Inkscape}
+    windows: Inkscape.Inkscape
+    macos: {cask: inkscape}
+
+  - name: gimp
+    desc: Editor de imagens
+    tags: [design]
+    linux: {apt: gimp, dnf: gimp, pacman: gimp, flatpak: org.gimp.GIMP}
+    windows: GIMP.GIMP
+    macos: {cask: gimp}
+
+  - name: ghostscript
+    desc: Processamento de PostScript/PDF
+    tags: [midia, pdf]
+    linux: {apt: ghostscript, dnf: ghostscript, pacman: ghostscript}
+
+  - name: poppler-utils
+    desc: pdftotext, pdfimages e afins
+    tags: [pdf]
+    linux: {apt: poppler-utils, dnf: poppler-utils, pacman: poppler}
+    macos: {brew: poppler}
+
+  # ---------------- desktop / aparência (Linux) ----------------
+  - name: kde-plasma-desktop
+    desc: Ambiente de desktop KDE Plasma 6
+    tags: [desktop, linux-only]
+    linux: {apt: kde-plasma-desktop, dnf: "@kde-desktop", pacman: plasma-meta}
+
+  - name: sddm
+    desc: Gerenciador de login do KDE
+    tags: [desktop, linux-only]
+    linux: {apt: sddm, dnf: sddm, pacman: sddm}
+
+  - name: papirus-icon-theme
+    desc: Tema de ícones Papirus
+    tags: [desktop, tema]
+    linux: {apt: papirus-icon-theme, dnf: papirus-icon-theme, pacman: papirus-icon-theme}
+
+  - name: qt-style-kvantum
+    desc: Motor de temas Qt (Kvantum)
+    tags: [desktop, tema]
+    linux: {apt: qt-style-kvantum, dnf: kvantum, pacman: kvantum}
+
+  - name: plank
+    desc: Dock estilo macOS
+    tags: [desktop, tema]
+    linux: {apt: plank, dnf: plank, pacman: plank}
+
+  - name: fonts
+    desc: Fontes (Inter, JetBrains Mono, Liberation, Noto Emoji)
+    tags: [desktop, fontes]
+    linux:
+      apt: fonts-inter fonts-jetbrains-mono fonts-liberation fonts-noto-color-emoji fonts-freefont-ttf
+      dnf: jetbrains-mono-fonts liberation-fonts google-noto-emoji-color-fonts
+      pacman: ttf-jetbrains-mono ttf-liberation noto-fonts-emoji inter-font
+
+  # ---------------- windows / compatibilidade ----------------
+  - name: wine
+    desc: Rodar programas Windows no Linux
+    tags: [compat, linux-only]
+    linux:
+      apt: wine wine32
+      dnf: wine
+      pacman: wine
+      post: 'echo "Para 32 bits no Debian rode: sudo dpkg --add-architecture i386 e sudo apt update"'
+
+  - name: winetricks
+    desc: Utilitário de configuração do Wine
+    tags: [compat, linux-only]
+    linux: {apt: winetricks, dnf: winetricks, pacman: winetricks}
+
+  - name: playonlinux
+    desc: Frontend para o Wine
+    tags: [compat, linux-only]
+    linux: {apt: playonlinux, dnf: playonlinux, pacman: playonlinux}
+
+  # ---------------- agentes / ferramentas de IA CLI ----------------
+  - name: hermes-agent
+    desc: Agente Hermes (Nous Research)
+    tags: [ia, cli]
+    linux:
+      script: |
+        python3 -m pip install --user --break-system-packages hermes-agent \
+          || pipx install hermes-agent
+    macos: {brew: pipx}
+
+  - name: claude-code
+    desc: CLI de codificação da Anthropic
+    tags: [ia, cli, dev]
+    linux:
+      script: npm install -g @anthropic-ai/claude-code
+    macos: {brew: node}
