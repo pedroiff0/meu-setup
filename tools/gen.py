@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""
-gen.py — gera os instaladores de Windows (winget) e macOS (brew) a partir do
-packages.yaml, para que exista uma única fonte de verdade.
+"""gen.py — Gera instaladores Windows (winget), macOS (brew), INVENTARIO.md e PACKAGES_CATALOG.md
 
+Uma única fonte de verdade: packages.yaml
+
+Uso:
     python3 tools/gen.py
 """
 from __future__ import annotations
@@ -19,10 +20,13 @@ ITEMS = DATA["packages"]
 
 def gen_windows() -> int:
     lines = [
+        "# ==============================================================================",
         "# install.ps1 — GERADO por tools/gen.py, nao edite a mao.",
-        "# Repopula um Windows usando winget.",
+        "# Repopula um ambiente Windows usando winget (Microsoft App Installer).",
+        "# Uso:",
         "#   powershell -ExecutionPolicy Bypass -File .\\windows\\install.ps1",
         "#   powershell -ExecutionPolicy Bypass -File .\\windows\\install.ps1 -DryRun",
+        "# ==============================================================================",
         "",
         "param([switch]$DryRun)",
         "",
@@ -55,7 +59,7 @@ def gen_windows() -> int:
         desc = it.get("desc", "").replace("'", "''")
         lines.append(f"Install-App '{win}' '{it['name']}' '{desc}'")
         count += 1
-    lines += ["", "Write-Host 'Concluido.' -ForegroundColor Green", ""]
+    lines += ["", "Write-Host 'Concluido com sucesso!' -ForegroundColor Green", ""]
     (ROOT / "windows" / "install.ps1").write_text("\n".join(lines), encoding="utf-8")
     return count
 
@@ -73,8 +77,13 @@ def gen_macos() -> int:
 
     lines = [
         "#!/usr/bin/env bash",
+        "# ==============================================================================",
         "# install.sh — GERADO por tools/gen.py, nao edite a mao.",
-        "# Repopula um macOS usando Homebrew.   Use DRY_RUN=1 para simular.",
+        "# Repopula um ambiente macOS usando Homebrew.",
+        "# Uso:",
+        "#   ./macos/install.sh",
+        "#   DRY_RUN=1 ./macos/install.sh",
+        "# ==============================================================================",
         "set -euo pipefail",
         "",
         'DRY_RUN="${DRY_RUN:-0}"',
@@ -108,7 +117,7 @@ def gen_macos() -> int:
     lines += ["", "# ---- casks ----"]
     for pkg, name, desc in casks:
         lines.append(f'install_cask "{pkg}" "{name}" "{desc}"')
-    lines += ["", 'echo "Concluido."', ""]
+    lines += ["", 'echo "Concluido com sucesso!"', ""]
 
     out = ROOT / "macos" / "install.sh"
     out.write_text("\n".join(lines), encoding="utf-8")
@@ -134,6 +143,45 @@ def gen_inventory() -> int:
         "# Inventário de programas\n\n"
         "Gerado por `tools/gen.py` a partir de `packages.yaml`.\n\n"
         + "\n".join(rows) + "\n", encoding="utf-8")
+
+    # Também gera docs/PACKAGES_CATALOG.md com agrupamento por categorias
+    groups: dict[str, list[dict]] = {}
+    for it in ITEMS:
+        for tag in it.get("tags", ["outros"]):
+            groups.setdefault(tag, []).append(it)
+
+    doc_lines = [
+        "# 📦 Catálogo Completo de Pacotes & Ferramentas",
+        "",
+        f"Este documento cataloga todos os **{len(ITEMS)} programas e utilitários** do `meu-setup`.",
+        "Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packages.yaml).",
+        "",
+        "## 📑 Índice por Categorias",
+        "",
+    ]
+    for tag in sorted(groups.keys()):
+        doc_lines.append(f"- [{tag.upper()} ({len(groups[tag])} apps)](#{tag})")
+    doc_lines.append("")
+
+    for tag in sorted(groups.keys()):
+        doc_lines.append(f"## {tag.upper()}")
+        doc_lines.append("")
+        doc_lines.append("| Pacote | Descrição | Linux | Windows | macOS |")
+        doc_lines.append("|---|---|---|---|---|")
+        for it in sorted(groups[tag], key=lambda x: x["name"]):
+            lin = it.get("linux") or {}
+            linux_txt = lin.get("apt") or lin.get("flatpak") or lin.get("snap") or ("script" if lin.get("script") else "—")
+            win = it.get("windows")
+            win_txt = win if isinstance(win, str) else ("script" if win else "—")
+            mac = it.get("macos") or {}
+            mac_txt = mac.get("brew") or mac.get("cask") or "—"
+            doc_lines.append(f"| **{it['name']}** | {it.get('desc','')} | `{linux_txt}` | `{win_txt}` | `{mac_txt}` |")
+        doc_lines.append("")
+
+    docs_dir = ROOT / "docs"
+    docs_dir.mkdir(parents=True, exist_ok=True)
+    (docs_dir / "PACKAGES_CATALOG.md").write_text("\n".join(doc_lines), encoding="utf-8")
+
     return len(ITEMS)
 
 
@@ -141,7 +189,8 @@ if __name__ == "__main__":
     w = gen_windows()
     m = gen_macos()
     i = gen_inventory()
-    print(f"windows/install.ps1: {w} apps")
-    print(f"macos/install.sh   : {m} apps")
-    print(f"INVENTARIO.md      : {i} itens")
+    print(f"windows/install.ps1     : {w} apps")
+    print(f"macos/install.sh        : {m} apps")
+    print(f"INVENTARIO.md           : {i} itens")
+    print(f"docs/PACKAGES_CATALOG.md: {i} itens")
     sys.exit(0)

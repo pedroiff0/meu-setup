@@ -1,0 +1,27 @@
+{
+  "schemes": [
+    {
+      "name": "DevSpace Cosmic",
+      "background": "#120D22",
+      "foreground": "#F1F5F9",
+      "cursorColor": "#A855F7",
+      "selectionBackground": "#5B4B8A",
+      "black": "#1A1B20",
+      "red": "#EC6E9F",
+      "green": "#9ED788",
+      "yellow": "#FDBB68",
+      "blue": "#84BAE9",
+      "purple": "#D384D8",
+      "cyan": "#75C8D3",
+      "white": "#D3C8D3",
+      "brightBlack": "#46484F",
+      "brightRed": "#EC6E9F",
+      "brightGreen": "#9ED788",
+      "brightYellow": "#FDBB68",
+      "brightBlue": "#84BAE9",
+      "brightPurple": "#D384D8",
+      "brightCyan": "#75C8D3",
+      "brightWhite": "#F2F2F2"
+    }
+  ]
+}

@@ -1,147 +1,221 @@
-# meu-setup
+<div align="center">
 
-Mapa de **todos os programas que eu uso** — Linux, Windows e macOS — com
-instaladores automáticos. Uma única fonte de verdade: [`packages.yaml`](packages.yaml).
+```
+      .      *       .     (  )   (   )  )       *       .      .
+*        .       .          ) (   )  (  (     .       .      *
+   .         *       .     ( )  (    ) )        .        .
+.       *   ┌───────────────────────────────┐     *      .       *
+         * │       ☕ COSMIC SETUP        │ *       .       .
+ *         └───────────────────────────────┘            *
+ 🪐  ███╗   ███╗███████╗██╗   ██╗      ███████╗███████╗████████╗██╗   ██╗██████╗   🌌
+     ████╗ ████║██╔════╝██║   ██║      ██╔════╝██╔════╝╚══██╔══╝██║   ██║██╔══██╗
+     ██╔████╔██║█████╗  ██║   ██║█████╗███████╗█████╗     ██║   ██║   ██║██████╔╝  ⟨/⟩
+     ██║╚██╔╝██║██╔══╝  ██║   ██║╚════╝╚════██║██╔══╝     ██║   ██║   ██║██╔═══╝    λ
+     ██║ ╚═╝ ██║███████╗╚██████╔╝      ███████║███████╗   ██║   ╚██████╔╝██║        ☄️
+```
 
-Depois de formatar a máquina, um comando repopula tudo.
+# 🌌 MEU-SETUP — Universal Multi-System Environment
+
+**Instalador Declarativo, Idempotente e Multi-Sistema para Desenvolvedores de Elite**  
+*Temas Cósmicos • Estilização Multi-OS • Otimizações de Servidor 24/7 • Energia & Bateria • 117+ Ferramentas*
+
+[![Release - v2.0.0](https://img.shields.io/badge/Release-v2.0.0-purple?style=for-the-badge&logo=rocket&logoColor=white)](https://github.com/pedroiff0/meu-setup/releases)
+[![OS - Linux](https://img.shields.io/badge/OS-Linux%20(Ubuntu%2FFedora%2FArch)-385141?style=for-the-badge&logo=linux&logoColor=white)](https://github.com/pedroiff0/meu-setup)
+[![OS - macOS](https://img.shields.io/badge/OS-macOS%20(Darwin)-black?style=for-the-badge&logo=apple&logoColor=white)](https://github.com/pedroiff0/meu-setup)
+[![OS - Windows](https://img.shields.io/badge/OS-Windows%2011%20(Winget)-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/pedroiff0/meu-setup)
+[![Packages](https://img.shields.io/badge/Packages-117%2B%20Curated-a855f7?style=for-the-badge)](packages.yaml)
+[![License - MIT](https://img.shields.io/badge/License-MIT-22c55e?style=for-the-badge)](LICENSE)
+
+</div>
 
 ---
 
-## Linux — repopular depois de formatar
+## ⚡ Início Rápido (1 Comando)
 
-Um comando, do zero:
-
-```bash
-bash <(curl -fsSL https://raw.githubusercontent.com/pedroiff0/meu-setup/main/linux/bootstrap.sh)
-```
-
-O bootstrap instala git/python3/pyyaml, clona este repo em `~/meu-setup` e roda
-um dry-run. Para instalar de verdade:
+### 🐧 Linux / 🍎 macOS — Repopular do Zero
 
 ```bash
-cd ~/meu-setup
-python3 linux/install.py --dry-run     # ver o que faria (sempre faça isso antes)
-python3 linux/install.py               # instalar tudo (pede confirmação)
-python3 linux/install.py --yes         # sem confirmação
-python3 linux/install.py --group dev --group ia
-python3 linux/install.py --only docker,ollama
-python3 linux/install.py --list        # listar pacotes e grupos
+bash <(curl -fsSL https://raw.githubusercontent.com/pedroiff0/meu-setup/main/install.sh)
 ```
 
-### O que o instalador faz
-
-- **Detecta a distro** e escolhe o gerenciador: `apt`, `dnf`, `pacman` ou `zypper`.
-- **É idempotente**: pula o que já está instalado (`dpkg-query`/`rpm -q`/`pacman -Qi`).
-- **Cadeia de fallback**: pacote nativo → flatpak → snap → script oficial.
-- **Adiciona repositórios** quando necessário (GitHub CLI, Chrome, Caddy).
-- **Roda ações pós-instalação** (ex.: habilitar o docker e adicionar o usuário ao grupo).
-- **Resumo final** com instalados / já presentes / falhas.
-
-### Grupos disponíveis
-
-`base` `dev` `python` `js` `infra` `rede` `sysadmin` `security` `ia` `gpu`
-`driver` `navegador` `escritorio` `latex` `midia` `design` `pdf` `notas`
-`produtividade` `desktop` `tema` `fontes` `compat` `cli` `web` `arquivos`
-`linux-only`
+> [!TIP]
+> O instalador detecta automaticamente a sua distribuição (Debian/Ubuntu, Fedora, Arch Linux, openSUSE, macOS ou Windows/MSYS), prepara o ambiente com verificação de TTY e abre a **TUI Interativa Cósmica**.
 
 ---
 
-## Windows
+## 🚀 Menu Interativo TUI
+
+O instalador conta com navegação via teclado (`[↑/↓]` para mover, `[Espaço]` para alternar `[✔]`, `[←/b]` para voltar, `[→/Enter]` para avançar, `[/]` para buscar e `[s]` para ordenar):
+
+```
+┌── 🌌 Escolha o Fluxo de Instalação 
+  ❯ [✔] ⚙️  Configuração Personalizada (Wizard Passo a Passo 1-a-1) (Controle total: Temas, Tweaks e Pacotes)
+    [ ] 🚀 Quick Setup (DevSpace Complete Stack) (Instalação rápida: DevSpace, Firefox, Tmux e 24/7 tweaks)
+    [ ] 🎨 Themes & Multi-OS Styling Hub (Item por Item) (19 componentes de temas, terminal e desktop)
+    [ ] ⚙️  System Tweaks, Power & Kernel Hub (Item por Item) (17 ajustes de energia, rede e kernel)
+    [ ] 📦 Catálogo Completo de Aplicações (Navegue e selecione 1-a-1 entre 117+ pacotes)
+    [ ] 🗂️  Instalar por Packs Temáticos (Com Refinamento) (Full-stack, DevOps, IA/LLMs, Acadêmico, Criativo)
+    [ ] 📊 Diagnóstico & Telemetria do Sistema (Inspeciona BBR, suspensão, hardware e ambiente)
+    [ ] 🗑️  Desinstalador & Reversão de Configurações (Reverte temas e configurações)
+└── [↑/↓: Mover | Espaço: Marcar | →/Enter: Avançar | Esc: Sair]
+```
+
+---
+
+## 🎨 1. Temas & Estilização Multi-Sistema
+
+O ecossistema visual centraliza a identidade **DevSpace Cósmico (Astronomia, Café & Dev)** e suporta ambientes Linux, macOS e Windows:
+
+| Componente | Plataformas | Descrição |
+|---|---|---|
+| **DevSpace Terminal** | Linux, macOS, Windows | Prompt Planck dinâmico com café ☕, Git status `🌿 main ✚`, relógio e statusline de IA |
+| **WhiteSur macOS Look** | Linux (GNOME/XFCE/KDE) | Tema GTK Dark Purple, ícones, cursores e Plank dock com botões macOS |
+| **Firefox Cósmico** | Linux, macOS, Windows | `userChrome.css`, abas compactas em gradiente e `userContent.css` |
+| **Tmux Cósmico 24/7** | Linux, macOS | Status bar inferior em português com frases dev, separador `●` e anti-ghosting |
+| **Starship Prompt** | Linux, macOS, Windows | Configuração `starship.toml` universal em Rust para Bash, Zsh e PowerShell |
+| **Terminais Modernos** | Multi-OS | Temas calibrados para Alacritty, Kitty, Windows Terminal e iTerm2 |
+
+```bash
+# Aplicar todos os temas e estilizações
+./install.sh --themes
+# ou via script direto:
+bash scripts/apply-all.sh
+```
+
+---
+
+## ⚙️ 2. Otimizações de Sistema, Energia & Kernel
+
+Configurações prontas para servidores ininterruptos e notebooks de desenvolvimento:
+
+| Otimização | Alvo | Benefício / Implementação |
+|---|---|---|
+| **Servidor 24/7 (Anti-Sleep)** | Systemd / GNOME / Lid | Mascara `sleep.target`, `suspend.target`, `hibernate.target` e ignora fechar a tampa |
+| **TCP BBR v2 + FQ** | Kernel Linux / Sysctl | Controle de congestionamento de alta vazão do Google em `/etc/sysctl.d/99-bbr.conf` |
+| **Sysctl Inotify & FD** | Kernel / Filesystem | Eleva `fs.inotify.max_user_watches = 524288`, `file-max = 2097152` e `swappiness = 10` |
+| **Docker Data-Root** | Docker Daemon | Move `/var/lib/docker` para `/home/docker-data` com rotação de logs (max 50MB) |
+| **Periodic SSD TRIM** | Discos NVMe / SSD | Ativa `fstrim.timer` no systemd para descarte contínuo de blocos |
+| **AdGuard Home** | Docker Container | DNS Sinkhole e bloqueador de anúncios na porta 53 com painel web em `http://localhost:8085` |
+| **Laptop Battery Mode** | Notebooks | Ativa TLP, powertop autotune e auto-cpufreq para máxima autonomia de bateria |
+
+```bash
+# Aplicar otimizações de sistema
+./install.sh --tweaks
+# ou individualmente:
+bash configs/power/server-24-7.sh
+bash configs/network/apply-sysctl-tuning.sh
+bash configs/storage/setup-docker-storage.sh
+```
+
+---
+
+## 📦 3. Catálogo de Aplicações & Packs Temáticos
+
+Todas as 99+ aplicações são gerenciadas via [`packages.yaml`](packages.yaml), com suporte nativo em:
+- **Linux**: `apt`, `dnf`, `pacman`, `zypper`, `flatpak`, `snap`, scripts e PPAs oficiais.
+- **macOS**: `brew` (fórmulas) e `brew --cask` (aplicativos).
+- **Windows**: `winget` (Microsoft Store App Installer).
+
+### 🗂️ Packs Curados
+
+- **`🚀 fullstack`**: Compiladores C/C++, Python, Node.js (via NVM), pnpm, Bun, Rust, Go, Git, Docker, Caddy, SQLite, PostgreSQL CLI.
+- **`⚡ devops`**: Docker, Compose, Lazydocker, Caddy, Tailscale, Syncthing, Netdata, Ctop, Dive, UFW, Ntfy.
+- **`🧠 ai`**: Ollama (LLMs locais), Open-WebUI, Hermes Agent, Claude Code, Antigravity CLI, CUDA Toolkit e Nvtop.
+- **`📚 academic`**: TeXLive Full, Pandoc, Typst, Zotero, LaTeXmk, Poppler e Ghostscript.
+- **`🎨 creative`**: FFmpeg, Inkscape, GIMP, VLC, OBS Studio e Kdenlive.
+- **`🖥️ server_min`**: Htop, Btop, Tmux, Duf, Ncdu, Gping, Zoxide, Fzf, Bat, Eza, Ripgrep, Fd-find e Fastfetch.
+- **`📦 all`**: Todos os 99+ programas catalogados.
+
+```bash
+# Instalar por pack
+python3 tools/installer.py --pack fullstack
+python3 tools/installer.py --pack devops
+python3 tools/installer.py --pack ai
+```
+
+---
+
+## 🪟 Windows (Winget & PowerShell)
 
 ```powershell
+# Simular instalação (Dry-Run)
 powershell -ExecutionPolicy Bypass -File .\windows\install.ps1 -DryRun
+
+# Instalar todos os programas catalogados
 powershell -ExecutionPolicy Bypass -File .\windows\install.ps1
+
+# Aplicar tema DevSpace no PowerShell & Windows Terminal
+powershell -ExecutionPolicy Bypass -File .\themes\devspace\install-devspace.ps1
 ```
 
-Usa `winget` (App Installer da Microsoft Store). Pula o que já está instalado.
+---
 
-## macOS
+## 🍎 macOS (Homebrew & Darwin)
 
 ```bash
+# Simular instalação
 DRY_RUN=1 ./macos/install.sh
+
+# Instalar fórmulas e casks
 ./macos/install.sh
-```
 
-Instala o Homebrew se faltar, depois formulas e casks.
-
----
-
-## Estrutura
-
-```
-packages.yaml        <- FONTE DE VERDADE: todos os programas (72+ apps)
-INVENTARIO.md        <- tabela gerada (Linux/Windows/macOS lado a lado)
-dotfiles/            <- configurações e temas (DevSpace, Firefox, Tmux, Sysctl, Docker)
-scripts/             <- instaladores de temas, terminal, Firefox e otimizações 24/7
-linux/
-  bootstrap.sh       <- entrada pós-formatação (curl | bash)
-  install.py         <- instalador multi-distro
-windows/
-  install.ps1        <- GERADO por tools/gen.py (winget)
-macos/
-  install.sh         <- GERADO por tools/gen.py (brew)
-tools/
-  gen.py             <- regenera windows/, macos/ e INVENTARIO.md
-  verify.sh          <- suite de testes e validação
+# Aplicar prompt DevSpace no Zsh e perfil iTerm2
+bash themes/devspace/install-devspace.sh
 ```
 
 ---
 
-## Estilização & Personalização (DevSpace / Servidor 24/7)
+## 📂 Estrutura do Repositório
 
-Para aplicar os temas visuais, a statusline com telemetria nativa do Antigravity, o tema do Firefox e as otimizações de rede do servidor:
-
-```bash
-# Aplicar tudo de uma vez
-bash scripts/apply-all.sh
-
-# Ou individualmente:
-bash scripts/apply-devspace-terminal.sh  # Tema DevSpace, prompt, statusline e aliases
-bash scripts/apply-firefox-theme.sh      # Tema DevSpace Cósmico no Firefox (userChrome.css)
-bash scripts/apply-tmux-theme.sh         # Tema DevSpace no Tmux com separador ●
-bash scripts/setup-server-optimizations.sh # TCP BBR + FQ, Anti-Sleep e Docker Data-Root
-bash scripts/setup-adguard.sh            # Iniciar AdGuard Home (DNS Sinkhole)
 ```
-
-
-## Adicionando um programa novo
-
-1. Edite `packages.yaml`:
-
-```yaml
-  - name: meu-programa
-    desc: Para que serve
-    tags: [dev]
-    linux: {apt: pacote-debian, dnf: pacote-fedora, pacman: pacote-arch}
-    windows: Publisher.AppId          # id do winget
-    macos: {brew: formula}            # ou {cask: nome}
-```
-
-Chaves aceitas em `linux`: `apt`, `dnf`, `pacman`, `zypper`, `flatpak`, `snap`
-(+ `classic: true`), `script`, `repo` (por gerenciador) e `post`.
-
-2. Regenere os artefatos:
-
-```bash
-python3 tools/gen.py
-```
-
-3. Valide e commit:
-
-```bash
-python3 linux/install.py --only meu-programa --dry-run
-git add -A && git commit -m "add: meu-programa" && git push
+meu-setup/
+├── install.sh                  # Ponto de entrada universal (curl | bash)
+├── packages.yaml               # FONTE ÚNICA DA VERDADE (99+ aplicações)
+├── INVENTARIO.md               # Tabela comparativa multiplataforma
+├── dotfiles/                   # Configurações brutas (DevSpace, Firefox, Tmux, Sysctl, Docker)
+├── themes/                     # Instaladores modulares de temas
+│   ├── devspace/               # Terminal cósmico, prompt Planck, fastfetch, aliases
+│   ├── whitesur/               # Tema GTK WhiteSur, ícones, cursores e Plank dock
+│   ├── firefox/                # userChrome.css e user.js cósmico
+│   ├── tmux/                   # .tmux.conf, statusline em português, auto-redraw
+│   └── wallpapers/             # Wallpapers Big Sur 5K e gradientes DevSpace
+├── configs/                    # Otimizações de sistema e infraestrutura
+│   ├── power/                  # Servidor 24/7 (Anti-Sleep), Laptop Battery (TLP)
+│   ├── network/                # TCP BBR + FQ, sysctl tuning, AdGuard Home, UFW
+│   ├── storage/                # Docker data-root (/home/docker-data), SSD fstrim
+│   └── monitoring/             # Fastfetch, btop, htop, lazydocker
+├── scripts/                    # Scripts executáveis standalone
+├── docs/                       # Documentação detalhada
+│   ├── ARCHITECTURE.md         # Design do sistema e fluxo de dados
+│   ├── THEMES_GUIDE.md         # Guia completo de estilização
+│   ├── SYSTEM_TWEAKS.md        # Guia de energia, BBR e Docker
+│   └── PACKAGES_CATALOG.md     # Catálogo completo agrupado por tags
+└── tools/
+    ├── installer.py            # Motor interativo TUI Cósmico Multi-Sistema
+    ├── gen.py                  # Gerador automático (Windows, macOS, Inventário, Docs)
+    └── verify.sh               # Suíte com 24+ testes automatizados
 ```
 
 ---
 
-## Aviso
-
-Vários itens rodam `curl | sh` de fornecedores oficiais (Ollama, Tailscale,
-Netdata, nvm). Sempre rode com `--dry-run` primeiro e leia o que vai executar.
-
-## Verificação
+## 🧪 Verificação & Testes de Integridade
 
 ```bash
-bash tools/verify.sh   # 22 checagens: sintaxe, manifesto, geradores, flags do install.py, segredos
+bash tools/verify.sh
 ```
+
+A suíte executa 24 validações rigorosas:
+- Sintaxe Python e compilação de scripts (`py_compile`).
+- Validação de sintaxe Bash em todos os scripts (`bash -n`).
+- Parsing e conformidade do manifesto [`packages.yaml`](packages.yaml).
+- Idempotência e determinismo dos geradores (`tools/gen.py`).
+- Auditoria de segurança contra segredos ou chaves privadas.
+- Testes funcionais do instalador com flags `--dry-run`, `--group`, `--only` e `--list`.
+
+---
+
+<div align="center">
+
+Feito com ☕, código limpo e inspiração cósmica por **[Pedro Ildefonso](https://github.com/pedroiff0)**
+
+</div>

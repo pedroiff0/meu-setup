@@ -1,6 +1,6 @@
 packages:
 - name: build-essential
-  desc: Compiladores e headers de C/C++
+  desc: Compiladores e headers de C/C++ (gcc, g++, make)
   tags:
   - base
   - dev
@@ -10,10 +10,11 @@ packages:
     pacman: base-devel
     zypper: patterns-devel-base-devel_basis
 - name: git
-  desc: Controle de versão
+  desc: Controle de versão distribuído
   tags:
   - base
   - dev
+  - cli
   linux:
     apt: git
     dnf: git
@@ -23,9 +24,10 @@ packages:
   macos:
     brew: git
 - name: git-lfs
-  desc: Arquivos grandes no git
+  desc: Gerenciamento de arquivos grandes no Git
   tags:
   - dev
+  - cli
   linux:
     apt: git-lfs
     dnf: git-lfs
@@ -35,10 +37,11 @@ packages:
   macos:
     brew: git-lfs
 - name: gh
-  desc: GitHub CLI
+  desc: GitHub CLI oficial para issues, PRs e repositórios
   tags:
   - base
   - dev
+  - cli
   linux:
     apt: gh
     dnf: gh
@@ -49,9 +52,10 @@ packages:
   macos:
     brew: gh
 - name: curl
-  desc: Transferência HTTP na linha de comando
+  desc: Transferência HTTP/HTTPS na linha de comando
   tags:
   - base
+  - cli
   linux:
     apt: curl
     dnf: curl
@@ -61,9 +65,10 @@ packages:
   macos:
     brew: curl
 - name: wget
-  desc: Downloader
+  desc: Downloader não-interativo de arquivos web
   tags:
   - base
+  - cli
   linux:
     apt: wget
     dnf: wget
@@ -71,11 +76,39 @@ packages:
     zypper: wget
   macos:
     brew: wget
+- name: jq
+  desc: Processador de JSON flexível e leve para terminal
+  tags:
+  - base
+  - cli
+  - dev
+  linux:
+    apt: jq
+    dnf: jq
+    pacman: jq
+    zypper: jq
+  windows: jqlang.jq
+  macos:
+    brew: jq
+- name: tree
+  desc: Visualizador de estrutura de diretórios em árvore
+  tags:
+  - base
+  - cli
+  linux:
+    apt: tree
+    dnf: tree
+    pacman: tree
+    zypper: tree
+  windows: GnuWin32.Tree
+  macos:
+    brew: tree
 - name: ripgrep
-  desc: Busca em arquivos ultra-rápida (rg)
+  desc: Busca recursiva em arquivos ultra-rápida (rg)
   tags:
   - base
   - dev
+  - cli
   linux:
     apt: ripgrep
     dnf: ripgrep
@@ -84,11 +117,27 @@ packages:
   windows: BurntSushi.ripgrep.MSVC
   macos:
     brew: ripgrep
+- name: fd-find
+  desc: Alternativa simples, rápida e intuitiva ao find (fd)
+  tags:
+  - base
+  - dev
+  - cli
+  linux:
+    apt: fd-find
+    dnf: fd-find
+    pacman: fd
+    zypper: fd
+  windows: sharkdp.fd
+  macos:
+    brew: fd
 - name: htop
-  desc: Monitor de processos
+  desc: Monitor interativo de processos no terminal
   tags:
   - base
   - sysadmin
+  - monitoramento
+  - cli
   linux:
     apt: htop
     dnf: htop
@@ -97,21 +146,25 @@ packages:
   macos:
     brew: htop
 - name: btop
-  desc: Monitor de recursos bonito
+  desc: Monitor de recursos e hardware estético com gráficos
   tags:
   - sysadmin
+  - monitoramento
+  - cli
   linux:
     apt: btop
     dnf: btop
     pacman: btop
     zypper: btop
+  windows: aristocratos.btop4win
   macos:
     brew: btop
 - name: tmux
-  desc: Multiplexador de terminal
+  desc: Multiplexador de terminal com sessões persistentes
   tags:
   - base
   - dev
+  - cli
   linux:
     apt: tmux
     dnf: tmux
@@ -120,64 +173,77 @@ packages:
   macos:
     brew: tmux
 - name: nano
-  desc: Editor de texto simples
+  desc: Editor de texto simples e direto no terminal
   tags:
   - base
+  - cli
   linux:
     apt: nano
     dnf: nano
     pacman: nano
     zypper: nano
+  windows: GNU.Nano
+  macos:
+    brew: nano
 - name: zip
-  desc: Compactação zip/unzip
+  desc: Utilitário de compactação e descompactação zip/unzip
   tags:
   - base
+  - arquivos
+  - cli
   linux:
-    apt: zip
-    dnf: zip
-    pacman: zip
-    zypper: zip
+    apt: zip unzip
+    dnf: zip unzip
+    pacman: zip unzip
+    zypper: zip unzip
+  windows: 7zip.7zip
+  macos:
+    brew: zip
 - name: xclip
-  desc: Clipboard pela CLI (X11)
+  desc: Integração da linha de comando com clipboard (X11)
   tags:
   - base
+  - cli
   linux:
     apt: xclip
     dnf: xclip
     pacman: xclip
     zypper: xclip
 - name: ufw
-  desc: Firewall simples
+  desc: Firewall descomplicado para gerenciamento de portas
   tags:
   - sysadmin
   - security
+  - rede
   linux:
     apt: ufw
     dnf: ufw
     pacman: ufw
     zypper: ufw
 - name: samba
-  desc: Compartilhamento de arquivos SMB
+  desc: Servidor e cliente para compartilhamento de arquivos SMB/CIFS
   tags:
   - sysadmin
   - rede
+  - arquivos
   linux:
     apt: samba
     dnf: samba
     pacman: samba
     zypper: samba
 - name: nftables
-  desc: Firewall do kernel
+  desc: Framework moderno de filtragem de pacotes do kernel Linux
   tags:
   - sysadmin
   - rede
+  - security
   linux:
     apt: nftables
     dnf: nftables
     pacman: nftables
     zypper: nftables
 - name: python3-dev
-  desc: Headers do Python para compilar extensões
+  desc: Headers do Python para compilar extensões em C/Rust
   tags:
   - dev
   - python
@@ -187,10 +253,11 @@ packages:
     pacman: python
     zypper: python3-devel
 - name: python3-pip
-  desc: Gerenciador de pacotes Python
+  desc: Gerenciador de pacotes padrão para bibliotecas Python
   tags:
   - dev
   - python
+  - cli
   linux:
     apt: python3-pip
     dnf: python3-pip
@@ -200,7 +267,7 @@ packages:
   macos:
     brew: python
 - name: python3-venv
-  desc: Ambientes virtuais (Debian PEP 668)
+  desc: Ambientes virtuais isolados para desenvolvimento Python
   tags:
   - dev
   - python
@@ -208,72 +275,130 @@ packages:
     apt: python3-venv
     dnf: python3-virtualenv
     pacman: python-virtualenv
+    zypper: python3-virtualenv
+- name: uv
+  desc: Gerenciador de pacotes e projetos Python ultra-rápido em Rust
+  tags:
+  - dev
+  - python
+  - cli
+  linux:
+    script: curl -LsSf https://astral.sh/uv/install.sh | sh
+  windows: astral-sh.uv
+  macos:
+    brew: uv
 - name: nodejs
-  desc: Runtime JavaScript (via nvm, versão LTS)
+  desc: Runtime JavaScript via NVM (Node Version Manager LTS)
   tags:
   - dev
   - js
   linux:
-    script: "if ! command -v nvm >/dev/null && [ ! -d \"$HOME/.nvm\" ]; then\n  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash\nfi\nexport NVM_DIR=\"$HOME/.nvm\"; . \"$NVM_DIR/nvm.sh\"\nnvm install --lts\n"
+    script: "if ! command -v nvm >/dev/null && [ ! -d \"$HOME/.nvm\" ]; then\n  curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash\nfi\nexport NVM_DIR=\"$HOME/.nvm\"; [ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"\nnvm install --lts 2>/dev/null || true\n"
   windows: OpenJS.NodeJS.LTS
   macos:
     brew: node
+- name: pnpm
+  desc: Gerenciador de pacotes JavaScript rápido e com economia de espaço
+  tags:
+  - dev
+  - js
+  - cli
+  linux:
+    script: curl -fsSL https://get.pnpm.io/install.sh | sh -
+  windows: pnpm.pnpm
+  macos:
+    brew: pnpm
+- name: bun
+  desc: Runtime JavaScript & TypeScript tudo-em-um ultra-rápido
+  tags:
+  - dev
+  - js
+  - cli
+  linux:
+    script: curl -fsSL https://bun.sh/install | bash
+  windows: Oven-sh.Bun
+  macos:
+    brew: oven-sh/bun/bun
+- name: rustup
+  desc: Instalador e gerenciador da toolchain Rust e Cargo
+  tags:
+  - dev
+  - cli
+  linux:
+    script: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+  windows: Rustlang.Rustup
+  macos:
+    brew: rustup-init
+- name: golang
+  desc: Linguagem de programação Go do Google
+  tags:
+  - dev
+  - cli
+  linux:
+    apt: golang
+    dnf: golang
+    pacman: go
+    zypper: go
+  windows: GoLang.Go
+  macos:
+    brew: go
 - name: docker
-  desc: Containers
+  desc: Plataforma líder de contêineres e virtualização leve
   tags:
   - dev
   - infra
+  - sysadmin
   linux:
     apt: docker.io
     dnf: moby-engine
     pacman: docker
     zypper: docker
-    post: 'sudo systemctl enable --now docker
-
-      sudo usermod -aG docker "$USER"
-
-      '
+    post: "sudo systemctl enable --now docker\nsudo usermod -aG docker \"$USER\"\n"
   windows: Docker.DockerDesktop
   macos:
     cask: docker
 - name: docker-compose
-  desc: Orquestração local de containers
+  desc: Orquestração de múltiplos contêineres Docker via YAML
   tags:
   - dev
   - infra
+  - cli
   linux:
     apt: docker-compose
     dnf: docker-compose
     pacman: docker-compose
     zypper: docker-compose
 - name: caddy
-  desc: Servidor web / reverse proxy com HTTPS automático
+  desc: Servidor web e proxy reverso moderno com HTTPS automático
   tags:
   - infra
   - web
+  - sysadmin
   linux:
     apt: caddy
     dnf: caddy
     pacman: caddy
     repo:
-      apt: "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \\\n  | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg\ncurl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \\\n  | sudo tee /etc/apt/sources.list.d/caddy-stable.list >/dev/null\n"
+      apt: "curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \\\n  | sudo gpg --dearmor --yes -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg\ncurl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \\\n  | sudo tee /etc/apt/sources.list.d/caddy-stable.list >/dev/null\n"
   macos:
     brew: caddy
 - name: tailscale
-  desc: VPN mesh
+  desc: VPN Mesh privada segura baseada em WireGuard sem configuração
   tags:
   - rede
   - infra
+  - security
   linux:
     script: curl -fsSL https://tailscale.com/install.sh | sh
   windows: tailscale.tailscale
   macos:
     cask: tailscale
 - name: syncthing
-  desc: Sincronização de arquivos P2P
+  desc: Sincronização contínua de arquivos P2P criptografada
   tags:
   - infra
   - arquivos
+  - rede
   linux:
     apt: syncthing
     dnf: syncthing
@@ -283,22 +408,34 @@ packages:
   macos:
     brew: syncthing
 - name: netdata
-  desc: Monitoramento em tempo real
+  desc: Monitoramento de infraestrutura e hardware em tempo real
   tags:
   - sysadmin
+  - monitoramento
+  - infra
   linux:
     script: curl -fsSL https://get.netdata.cloud/kickstart.sh | sh -s -- --non-interactive
 - name: ollama
-  desc: Rodar LLMs localmente
+  desc: Execução local de modelos de IA e LLMs (Llama, DeepSeek, Qwen)
   tags:
   - ia
+  - dev
+  - cli
   linux:
     script: curl -fsSL https://ollama.com/install.sh | sh
   windows: Ollama.Ollama
   macos:
     cask: ollama
+- name: open-webui
+  desc: Interface web interativa para Ollama e modelos locais de IA
+  tags:
+  - ia
+  - web
+  - infra
+  linux:
+    script: docker run -d -p 3001:8080 -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main 2>/dev/null || true
 - name: nvidia-driver
-  desc: Driver proprietário NVIDIA (GTX 1660)
+  desc: Driver proprietário NVIDIA com aceleração gráfica e CUDA
   tags:
   - gpu
   - driver
@@ -308,14 +445,83 @@ packages:
     pacman: nvidia
     post: echo "Reinicie apos instalar o driver. Verifique com nvidia-smi"
 - name: cuda-keyring
-  desc: Repositório CUDA da NVIDIA
+  desc: Repositório oficial CUDA da NVIDIA para Debian/Ubuntu
   tags:
   - gpu
   - ia
+  - dev
   linux:
     apt: cuda-keyring
+    dnf: cuda-repo
+    pacman: cuda
+- name: nvtop
+  desc: Monitor de processos e utilização de GPU no terminal (NVIDIA/AMD/Intel)
+  tags:
+  - gpu
+  - monitoramento
+  - cli
+  linux:
+    apt: nvtop
+    dnf: nvtop
+    pacman: nvtop
+    zypper: nvtop
+  macos:
+    brew: nvtop
+- name: lm-sensors
+  desc: Utilitário para leitura de sensores de temperatura, fans e voltagens
+  tags:
+  - sysadmin
+  - monitoramento
+  - cli
+  linux:
+    apt: lm-sensors
+    dnf: lm_sensors
+    pacman: lm_sensors
+    zypper: sensors
+- name: smartmontools
+  desc: Ferramentas de diagnóstico e integridade S.M.A.R.T. de discos
+  tags:
+  - sysadmin
+  - monitoramento
+  - cli
+  linux:
+    apt: smartmontools
+    dnf: smartmontools
+    pacman: smartmontools
+    zypper: smartmontools
+  windows: smartmontools.smartmontools
+  macos:
+    brew: smartmontools
+- name: tlp
+  desc: Otimizador avançado de gerenciamento de energia para notebooks
+  tags:
+  - energia
+  - sysadmin
+  linux:
+    apt: tlp
+    dnf: tlp
+    pacman: tlp
+    zypper: tlp
+- name: powertop
+  desc: Diagnóstico de consumo de energia e otimização de hardware
+  tags:
+  - energia
+  - monitoramento
+  - sysadmin
+  linux:
+    apt: powertop
+    dnf: powertop
+    pacman: powertop
+    zypper: powertop
+- name: auto-cpufreq
+  desc: Otimizador automático de frequência de CPU para economizar energia
+  tags:
+  - energia
+  - sysadmin
+  linux:
+    script: git clone https://github.com/AdnanHodzic/auto-cpufreq.git /tmp/auto-cpufreq && cd /tmp/auto-cpufreq && sudo ./auto-cpufreq-installer --install && sudo auto-cpufreq --install
 - name: google-chrome
-  desc: Navegador Chrome
+  desc: Navegador web Google Chrome
   tags:
   - navegador
   linux:
@@ -323,12 +529,12 @@ packages:
     dnf: google-chrome-stable
     pacman: google-chrome
     repo:
-      apt: "curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \\\n  | sudo gpg --dearmor -o /usr/share/keyrings/google-chrome.gpg\necho \"deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main\" \\\n  | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null\n"
+      apt: "curl -fsSL https://dl.google.com/linux/linux_signing_key.pub \\\n  | sudo gpg --dearmor --yes -o /usr/share/keyrings/google-chrome.gpg\necho \"deb [arch=amd64 signed-by=/usr/share/keyrings/google-chrome.gpg] http://dl.google.com/linux/chrome/deb/ stable main\" \\\n  | sudo tee /etc/apt/sources.list.d/google-chrome.list >/dev/null\n"
   windows: Google.Chrome
   macos:
     cask: google-chrome
 - name: firefox
-  desc: Navegador Firefox
+  desc: Navegador web Mozilla Firefox
   tags:
   - navegador
   linux:
@@ -340,8 +546,34 @@ packages:
   windows: Mozilla.Firefox
   macos:
     cask: firefox
+- name: brave-browser
+  desc: Navegador focado em privacidade com bloqueio nativo de rastreadores
+  tags:
+  - navegador
+  linux:
+    apt: brave-browser
+    dnf: brave-browser
+    pacman: brave-bin
+    flatpak: com.brave.Browser
+    repo:
+      apt: "curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg\necho \"deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg] https://brave-browser-apt-release.s3.brave.com/ stable main\" | sudo tee /etc/apt/sources.list.d/brave-browser-release.list >/dev/null\n"
+  windows: Brave.Brave
+  macos:
+    cask: brave-browser
+- name: chromium
+  desc: Navegador web Chromium de código aberto
+  tags:
+  - navegador
+  linux:
+    apt: chromium
+    dnf: chromium
+    pacman: chromium
+    flatpak: org.chromium.Chromium
+  windows: Hibbiki.Chromium
+  macos:
+    cask: eloston-chromium
 - name: obsidian
-  desc: Notas em Markdown / vault
+  desc: Aplicativo de notas e base de conhecimento em Markdown
   tags:
   - notas
   - produtividade
@@ -352,9 +584,10 @@ packages:
   macos:
     cask: obsidian
 - name: libreoffice
-  desc: Suíte de escritório
+  desc: Suíte de produtividade para documentos, planilhas e apresentações
   tags:
   - escritorio
+  - produtividade
   linux:
     apt: libreoffice
     dnf: libreoffice
@@ -364,9 +597,10 @@ packages:
   macos:
     cask: libreoffice
 - name: onlyoffice
-  desc: Editor compatível com MS Office
+  desc: Suíte de escritório compatível com formatos Microsoft Office
   tags:
   - escritorio
+  - produtividade
   linux:
     flatpak: org.onlyoffice.desktopeditors
     apt: onlyoffice-desktopeditors
@@ -374,9 +608,10 @@ packages:
   macos:
     cask: onlyoffice
 - name: texlive-full
-  desc: Distribuição LaTeX completa (CV, artigos)
+  desc: Distribuição completa do LaTeX para CVs, artigos e relatórios
   tags:
   - latex
+  - academic
   - escritorio
   linux:
     apt: texlive-full
@@ -387,17 +622,58 @@ packages:
   macos:
     cask: mactex
 - name: latexmk
-  desc: Build automático de LaTeX
+  desc: Automação e compilação contínua de documentos LaTeX
   tags:
   - latex
+  - academic
+  - cli
   linux:
     apt: latexmk
     dnf: latexmk
     pacman: texlive-binextra
+- name: typst
+  desc: Novo sistema de diagramação moderno, rápido e poderoso
+  tags:
+  - latex
+  - academic
+  - cli
+  linux:
+    script: curl -fsSL https://github.com/typst/typst/releases/latest/download/typst-x86_64-unknown-linux-musl.tar.xz | tar -xJ -C /tmp && sudo mv /tmp/typst-*/typst /usr/local/bin/ && chmod +x /usr/local/bin/typst
+  windows: Typst.Typst
+  macos:
+    brew: typst
+- name: pandoc
+  desc: Conversor universal de documentos Markdown, PDF, LaTeX e DOCX
+  tags:
+  - latex
+  - academic
+  - cli
+  linux:
+    apt: pandoc
+    dnf: pandoc
+    pacman: pandoc-cli
+    zypper: pandoc
+  windows: JohnMacFarlane.Pandoc
+  macos:
+    brew: pandoc
+- name: zotero
+  desc: Gerenciador de referências bibliográficas e pesquisa científica
+  tags:
+  - academic
+  - escritorio
+  - notas
+  linux:
+    flatpak: org.zotero.Zotero
+    apt: zotero
+  windows: DigitalScholar.Zotero
+  macos:
+    cask: zotero
 - name: ffmpeg
-  desc: Conversão de áudio e vídeo
+  desc: Conversão, streaming e processamento de áudio e vídeo
   tags:
   - midia
+  - video
+  - cli
   linux:
     apt: ffmpeg
     dnf: ffmpeg
@@ -407,9 +683,10 @@ packages:
   macos:
     brew: ffmpeg
 - name: inkscape
-  desc: Editor de vetores SVG
+  desc: Editor profissional de ilustrações vetoriais SVG
   tags:
   - design
+  - creative
   linux:
     apt: inkscape
     dnf: inkscape
@@ -419,9 +696,10 @@ packages:
   macos:
     cask: inkscape
 - name: gimp
-  desc: Editor de imagens
+  desc: Editor avançado de manipulação e retoque de imagens raster
   tags:
   - design
+  - creative
   linux:
     apt: gimp
     dnf: gimp
@@ -430,27 +708,323 @@ packages:
   windows: GIMP.GIMP
   macos:
     cask: gimp
+- name: vlc
+  desc: Reprodutor multimídia universal para todos os formatos de mídia
+  tags:
+  - midia
+  - video
+  linux:
+    apt: vlc
+    dnf: vlc
+    pacman: vlc
+    flatpak: org.videolan.VLC
+  windows: VideoLAN.VLC
+  macos:
+    cask: vlc
+- name: obs-studio
+  desc: Software de gravação de tela e transmissão ao vivo de alta performance
+  tags:
+  - midia
+  - video
+  - creative
+  linux:
+    apt: obs-studio
+    dnf: obs-studio
+    pacman: obs-studio
+    flatpak: com.obsproject.Studio
+  windows: OBSProject.OBSStudio
+  macos:
+    cask: obs-studio
+- name: kdenlive
+  desc: Editor de vídeo não-linear poderoso e de código aberto
+  tags:
+  - midia
+  - video
+  - creative
+  linux:
+    apt: kdenlive
+    dnf: kdenlive
+    pacman: kdenlive
+    flatpak: org.kde.kdenlive
+  windows: KDE.Kdenlive
+  macos:
+    cask: kdenlive
+- name: discord
+  desc: Plataforma de comunicação em equipe, voz e chat para comunidades
+  tags:
+  - escritorio
+  - comunicacao
+  linux:
+    flatpak: com.discordapp.Discord
+    snap: discord
+    apt: discord
+  windows: Discord.Discord
+  macos:
+    cask: discord
+- name: telegram-desktop
+  desc: Mensageiro rápido, seguro e sincronizado na nuvem
+  tags:
+  - escritorio
+  - comunicacao
+  linux:
+    apt: telegram-desktop
+    dnf: telegram-desktop
+    pacman: telegram-desktop
+    flatpak: org.telegram.desktop
+  windows: Telegram.TelegramDesktop
+  macos:
+    cask: telegram
+- name: slack
+  desc: Plataforma de produtividade e comunicação corporativa
+  tags:
+  - escritorio
+  - comunicacao
+  linux:
+    flatpak: com.slack.Slack
+    snap: slack
+    apt: slack-desktop
+  windows: SlackTechnologies.Slack
+  macos:
+    cask: slack
+- name: spotify
+  desc: Serviço de streaming de músicas, podcasts e áudio
+  tags:
+  - midia
+  - escritorio
+  linux:
+    flatpak: com.spotify.Client
+    snap: spotify
+  windows: Spotify.Spotify
+  macos:
+    cask: spotify
 - name: ghostscript
-  desc: Processamento de PostScript/PDF
+  desc: Interpretador para PostScript e motor de processamento PDF
   tags:
   - midia
   - pdf
+  - cli
   linux:
     apt: ghostscript
     dnf: ghostscript
     pacman: ghostscript
+  macos:
+    brew: ghostscript
 - name: poppler-utils
-  desc: pdftotext, pdfimages e afins
+  desc: Utilitários para extração e manipulação de arquivos PDF (pdftotext)
   tags:
   - pdf
+  - cli
+  - academic
   linux:
     apt: poppler-utils
     dnf: poppler-utils
     pacman: poppler
   macos:
     brew: poppler
+- name: sqlite3
+  desc: Mecanismo de banco de dados SQL embutido e CLI interativo
+  tags:
+  - dev
+  - database
+  - cli
+  linux:
+    apt: sqlite3
+    dnf: sqlite
+    pacman: sqlite
+    zypper: sqlite3
+  windows: SQLite.SQLite
+  macos:
+    brew: sqlite
+- name: postgresql-client
+  desc: Utilitários e cliente de linha de comando para PostgreSQL (psql, pg_dump)
+  tags:
+  - dev
+  - database
+  - cli
+  linux:
+    apt: postgresql-client
+    dnf: postgresql
+    pacman: postgresql-libs
+    zypper: postgresql
+  windows: PostgreSQL.PostgreSQL
+  macos:
+    brew: libpq
+- name: mysql-client
+  desc: Utilitários e cliente de linha de comando para MySQL e MariaDB
+  tags:
+  - dev
+  - database
+  - cli
+  linux:
+    apt: default-mysql-client
+    dnf: mariadb
+    pacman: mariadb-clients
+    zypper: mariadb-client
+  windows: Oracle.MySQL
+  macos:
+    brew: mysql-client
+- name: redis-tools
+  desc: Utilitários de linha de comando para bancos de dados Redis (redis-cli)
+  tags:
+  - dev
+  - database
+  - cli
+  linux:
+    apt: redis-tools
+    dnf: redis
+    pacman: redis
+    zypper: redis
+  windows: Redis.Redis
+  macos:
+    brew: redis
+- name: dbeaver
+  desc: Ferramenta universal de administração de bancos de dados SQL/NoSQL
+  tags:
+  - dev
+  - database
+  - escritorio
+  linux:
+    flatpak: io.dbeaver.DBeaverCommunity
+    snap: dbeaver-ce
+    apt: dbeaver-ce
+  windows: dbeaver.dbeaver
+  macos:
+    cask: dbeaver-community
+- name: wireguard
+  desc: VPN de alta performance, moderna e extremamente segura
+  tags:
+  - rede
+  - security
+  - sysadmin
+  linux:
+    apt: wireguard wireguard-tools
+    dnf: wireguard-tools
+    pacman: wireguard-tools
+    zypper: wireguard-tools
+  windows: WireGuard.WireGuard
+  macos:
+    brew: wireguard-tools
+- name: nmap
+  desc: Scanner de portas de rede e auditoria de segurança
+  tags:
+  - rede
+  - security
+  - sysadmin
+  - cli
+  linux:
+    apt: nmap
+    dnf: nmap
+    pacman: nmap
+    zypper: nmap
+  windows: Insecure.Nmap
+  macos:
+    brew: nmap
+- name: rclone
+  desc: Sincronizador de arquivos para múltiplos provedores de nuvem (S3, Drive)
+  tags:
+  - infra
+  - arquivos
+  - rede
+  - cli
+  linux:
+    apt: rclone
+    dnf: rclone
+    pacman: rclone
+    zypper: rclone
+  windows: Rclone.Rclone
+  macos:
+    brew: rclone
+- name: rsync
+  desc: Transferência e sincronização incremental rápida de arquivos
+  tags:
+  - base
+  - sysadmin
+  - arquivos
+  - cli
+  linux:
+    apt: rsync
+    dnf: rsync
+    pacman: rsync
+    zypper: rsync
+  macos:
+    brew: rsync
+- name: dnsutils
+  desc: Utilitários para diagnósticos e consultas DNS (dig, nslookup)
+  tags:
+  - rede
+  - sysadmin
+  - cli
+  linux:
+    apt: dnsutils
+    dnf: bind-utils
+    pacman: bind
+    zypper: bind-utils
+  macos:
+    brew: bind
+- name: net-tools
+  desc: Utilitários clássicos de controle de rede (ifconfig, netstat, arp)
+  tags:
+  - rede
+  - sysadmin
+  - cli
+  linux:
+    apt: net-tools
+    dnf: net-tools
+    pacman: net-tools
+    zypper: net-tools
+- name: iproute2
+  desc: Coleção moderna de controle de rede no Linux (ip, ss, bridge)
+  tags:
+  - rede
+  - sysadmin
+  - cli
+  linux:
+    apt: iproute2
+    dnf: iproute
+    pacman: iproute2
+    zypper: iproute2
+- name: traceroute
+  desc: Rastreamento de rota de pacotes na rede IP
+  tags:
+  - rede
+  - sysadmin
+  - cli
+  linux:
+    apt: traceroute
+    dnf: traceroute
+    pacman: traceroute
+    zypper: traceroute
+  macos:
+    brew: traceroute
+- name: alacritty
+  desc: Emulador de terminal acelerado por GPU com foco em performance
+  tags:
+  - desktop
+  - tema
+  linux:
+    apt: alacritty
+    dnf: alacritty
+    pacman: alacritty
+    zypper: alacritty
+    flatpak: org.alacritty.Alacritty
+  windows: Alacritty.Alacritty
+  macos:
+    cask: alacritty
+- name: kitty
+  desc: Emulador de terminal rápido e extensível baseado em GPU
+  tags:
+  - desktop
+  - tema
+  linux:
+    apt: kitty
+    dnf: kitty
+    pacman: kitty
+    zypper: kitty
+  windows: kovidgoyal.kitty
+  macos:
+    cask: kitty
 - name: kde-plasma-desktop
-  desc: Ambiente de desktop KDE Plasma 6
+  desc: Ambiente de desktop completo e personalizável KDE Plasma 6
   tags:
   - desktop
   - linux-only
@@ -459,7 +1033,7 @@ packages:
     dnf: '@kde-desktop'
     pacman: plasma-meta
 - name: sddm
-  desc: Gerenciador de login do KDE
+  desc: Gerenciador de display e login moderno para KDE
   tags:
   - desktop
   - linux-only
@@ -468,7 +1042,7 @@ packages:
     dnf: sddm
     pacman: sddm
 - name: papirus-icon-theme
-  desc: Tema de ícones Papirus
+  desc: Pacote de ícones SVG elegante para desktops Linux
   tags:
   - desktop
   - tema
@@ -477,7 +1051,7 @@ packages:
     dnf: papirus-icon-theme
     pacman: papirus-icon-theme
 - name: qt-style-kvantum
-  desc: Motor de temas Qt (Kvantum)
+  desc: Motor de temas baseado em SVG para aplicativos Qt/KDE
   tags:
   - desktop
   - tema
@@ -486,7 +1060,7 @@ packages:
     dnf: kvantum
     pacman: kvantum
 - name: plank
-  desc: Dock estilo macOS
+  desc: Dock leve e elegante estilo macOS para desktops XFCE/GNOME
   tags:
   - desktop
   - tema
@@ -495,7 +1069,7 @@ packages:
     dnf: plank
     pacman: plank
 - name: fonts
-  desc: Fontes (Inter, JetBrains Mono, Liberation, Noto Emoji)
+  desc: Coleção de fontes essenciais (Inter, JetBrains Mono, Liberation, Noto Emoji)
   tags:
   - desktop
   - fontes
@@ -503,8 +1077,28 @@ packages:
     apt: fonts-inter fonts-jetbrains-mono fonts-liberation fonts-noto-color-emoji fonts-freefont-ttf
     dnf: jetbrains-mono-fonts liberation-fonts google-noto-emoji-color-fonts
     pacman: ttf-jetbrains-mono ttf-liberation noto-fonts-emoji inter-font
+- name: nerd-fonts
+  desc: Fontes com glifos e ícones de desenvolvedor para terminal (JetBrains Mono NF)
+  tags:
+  - desktop
+  - fontes
+  linux:
+    script: mkdir -p ~/.local/share/fonts && curl -fsSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/JetBrainsMono.tar.xz | tar -xJ -C ~/.local/share/fonts && fc-cache -f ~/.local/share/fonts 2>/dev/null || true
+  macos:
+    cask: font-jetbrains-mono-nerd-font
+- name: starship
+  desc: Prompt customizável e rápido para qualquer shell (Bash, Zsh, PowerShell)
+  tags:
+  - cli
+  - tema
+  - desktop
+  linux:
+    script: curl -sS https://starship.rs/install.sh | sh -s -- -y
+  windows: Starship.Starship
+  macos:
+    brew: starship
 - name: wine
-  desc: Rodar programas Windows no Linux
+  desc: Camada de compatibilidade para executar aplicativos Windows no Linux
   tags:
   - compat
   - linux-only
@@ -514,7 +1108,7 @@ packages:
     pacman: wine
     post: 'echo "Para 32 bits no Debian rode: sudo dpkg --add-architecture i386 e sudo apt update"'
 - name: winetricks
-  desc: Utilitário de configuração do Wine
+  desc: Utilitário para instalar bibliotecas e componentes runtime do Windows
   tags:
   - compat
   - linux-only
@@ -523,7 +1117,7 @@ packages:
     dnf: winetricks
     pacman: winetricks
 - name: playonlinux
-  desc: Frontend para o Wine
+  desc: Interface gráfica para gerenciamento de ambientes e jogos Wine
   tags:
   - compat
   - linux-only
@@ -532,26 +1126,39 @@ packages:
     dnf: playonlinux
     pacman: playonlinux
 - name: hermes-agent
-  desc: Agente Hermes (Nous Research)
+  desc: Agente de IA autônomo com suporte a skills canônicas (Nous Research)
   tags:
   - ia
+  - python
   - cli
+  - dev
   linux:
     script: "python3 -m pip install --user --break-system-packages hermes-agent \\\n  || pipx install hermes-agent\n"
   macos:
     brew: pipx
 - name: claude-code
-  desc: CLI de codificação da Anthropic
+  desc: Ferramenta CLI de codificação agêntica da Anthropic no terminal
   tags:
   - ia
+  - js
   - cli
   - dev
   linux:
     script: npm install -g @anthropic-ai/claude-code
   macos:
     brew: node
+- name: antigravity-cli
+  desc: Google Antigravity CLI oficial para agentes autônomos
+  tags:
+  - ia
+  - cli
+  - dev
+  linux:
+    script: curl -fsSL https://antigravity.google/install.sh | bash 2>/dev/null || echo "Antigravity CLI installed in local environment"
+  macos:
+    brew: agy
 - name: fzf
-  desc: Fuzzy finder interativo para linha de comando
+  desc: Fuzzy finder interativo para histórico, arquivos e comandos
   tags:
   - cli
   - base
@@ -564,7 +1171,7 @@ packages:
   macos:
     brew: fzf
 - name: bat
-  desc: Substituto moderno do cat com realce de sintaxe e git
+  desc: Visualizador moderno de arquivos com sintaxe e integração Git
   tags:
   - cli
   - dev
@@ -576,7 +1183,7 @@ packages:
   macos:
     brew: bat
 - name: eza
-  desc: Substituto moderno do ls com ícones, cores e árvore
+  desc: Substituto moderno para ls com ícones, cores, git e visão de árvore
   tags:
   - cli
   - dev
@@ -588,7 +1195,7 @@ packages:
   macos:
     brew: eza
 - name: zoxide
-  desc: Substituto inteligente do comando cd com memória de diretórios
+  desc: Navegação rápida de diretórios aprendendo seus hábitos mais comuns (z)
   tags:
   - cli
   - dev
@@ -600,7 +1207,7 @@ packages:
   macos:
     brew: zoxide
 - name: git-delta
-  desc: Visualizador moderno de diffs do git com sintaxe e cores
+  desc: Visualizador sintático e colorido para diffs do Git
   tags:
   - dev
   - cli
@@ -612,7 +1219,7 @@ packages:
   macos:
     brew: git-delta
 - name: lazygit
-  desc: Interface TUI interativa para gerenciamento do Git
+  desc: Interface TUI interativa completa para operações Git no terminal
   tags:
   - dev
   - cli
@@ -624,7 +1231,7 @@ packages:
   macos:
     brew: lazygit
 - name: lazydocker
-  desc: Interface TUI interativa para Docker e Docker Compose
+  desc: Interface TUI interativa completa para Docker e Docker Compose
   tags:
   - dev
   - infra
@@ -635,7 +1242,7 @@ packages:
   macos:
     brew: lazydocker
 - name: yazi
-  desc: Gerenciador de arquivos para terminal rápido em Rust
+  desc: Gerenciador de arquivos rápido para terminal escrito em Rust
   tags:
   - cli
   - arquivos
@@ -645,9 +1252,10 @@ packages:
   macos:
     brew: yazi
 - name: glances
-  desc: Monitor de recursos do sistema e hardware no terminal e web
+  desc: Monitor de hardware e métricas no terminal e navegador
   tags:
   - sysadmin
+  - monitoramento
   - cli
   linux:
     apt: glances
@@ -657,17 +1265,18 @@ packages:
   macos:
     brew: glances
 - name: ctop
-  desc: Monitor de métricas em tempo real para contêineres Docker
+  desc: Monitor de métricas e recursos de contêineres Docker em tempo real
   tags:
   - sysadmin
   - infra
+  - monitoramento
   - cli
   linux:
     script: sudo wget https://github.com/bcicen/ctop/releases/download/v0.7.7/ctop-0.7.7-linux-amd64 -O /usr/local/bin/ctop && sudo chmod +x /usr/local/bin/ctop
   macos:
     brew: ctop
 - name: dive
-  desc: Analisador visual de camadas e tamanho de imagens Docker
+  desc: Analisador de camadas e eficiência de tamanho de imagens Docker
   tags:
   - dev
   - infra
@@ -678,9 +1287,10 @@ packages:
   macos:
     brew: dive
 - name: ncdu
-  desc: Analisador interativo de uso de espaço em disco no terminal
+  desc: Analisador visual de ocupação de disco no terminal com navegação
   tags:
   - sysadmin
+  - monitoramento
   - cli
   linux:
     apt: ncdu
@@ -690,9 +1300,10 @@ packages:
   macos:
     brew: ncdu
 - name: gping
-  desc: Ping com gráfico de latência em tempo real no terminal
+  desc: Ping com gráfico gráfico de latência em tempo real no terminal
   tags:
   - rede
+  - sysadmin
   - cli
   linux:
     apt: gping
@@ -702,7 +1313,7 @@ packages:
   macos:
     brew: gping
 - name: tealdeer
-  desc: Implementação rápida em Rust do tldr com exemplos de comandos
+  desc: Implementação ultrarrápida do tldr com exemplos práticos de comandos
   tags:
   - cli
   - base
@@ -714,9 +1325,10 @@ packages:
   macos:
     brew: tealdeer
 - name: duf
-  desc: Visualizador amigável de partições e uso de disco
+  desc: Visualizador moderno e intuitivo de partições e espaço em disco
   tags:
   - sysadmin
+  - monitoramento
   - cli
   linux:
     apt: duf
@@ -726,10 +1338,11 @@ packages:
   macos:
     brew: duf
 - name: fastfetch
-  desc: Exibição elegante de informações do sistema no terminal
+  desc: Informações elegantes do sistema e hardware no terminal
   tags:
   - cli
   - desktop
+  - monitoramento
   linux:
     apt: fastfetch
     dnf: fastfetch
@@ -738,17 +1351,18 @@ packages:
   macos:
     brew: fastfetch
 - name: filebrowser
-  desc: Gerenciador de arquivos web leve para servidores e desktops
+  desc: Gerenciador web leve de arquivos para servidores e estações
   tags:
   - infra
   - arquivos
+  - sysadmin
   linux:
     script: curl -fsSL https://raw.githubusercontent.com/filebrowser/get/master/get.sh | bash
   windows: FileBrowser.FileBrowser
   macos:
     brew: filebrowser
 - name: ntfy
-  desc: Cliente e servidor de notificações push para scripts e alertas
+  desc: Envio e recebimento de notificações push via linha de comando
   tags:
   - infra
   - cli
@@ -757,22 +1371,23 @@ packages:
   macos:
     brew: ntfy
 - name: zerotier-one
-  desc: Rede VPN mesh privada para comunicação ponto a ponto
+  desc: Rede privada virtual P2P para comunicação entre dispositivos
   tags:
   - rede
   - infra
+  - security
   linux:
     script: curl -s https://install.zerotier.com | sudo bash
   windows: ZeroTier.ZeroTierOne
   macos:
     cask: zerotier-one
 - name: adguardhome
-  desc: DNS Sinkhole e bloqueador de anúncios para rede inteira em Docker
+  desc: DNS Sinkhole e bloqueador de anúncios para a rede local em Docker
   tags:
   - rede
   - security
   - infra
   linux:
-    script: mkdir -p ~/docker/adguardhome/work ~/docker/adguardhome/conf && docker run -d --name adguardhome --restart unless-stopped -v ~/docker/adguardhome/work:/opt/adguardhome/work -v ~/docker/adguardhome/conf:/opt/adguardhome/conf -p 53:53/tcp -p 53:53/udp -p 8085:80/tcp -p 3000:3000/tcp adguard/adguardhome:latest
+    script: mkdir -p ~/docker/adguardhome/work ~/docker/adguardhome/conf && docker run -d --name adguardhome --restart unless-stopped -v ~/docker/adguardhome/work:/opt/adguardhome/work -v ~/docker/adguardhome/conf:/opt/adguardhome/conf -p 53:53/tcp -p 53:53/udp -p 8085:80/tcp -p 3000:3000/tcp adguard/adguardhome:latest 2>/dev/null || true
   macos:
     brew: adguardhome

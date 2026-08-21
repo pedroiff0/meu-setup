@@ -1,0 +1,71 @@
+# ==============================================================================
+# DevSpace Cosmic Starship Prompt — Cross-Shell & Cross-Platform Prompt
+# ==============================================================================
+format = """
+[☕ $username](bold #d384d8)\
+$hostname\
+[ in ](#5c5478)\
+[$directory](#75c8d3)\
+$git_branch\
+$git_status\
+$python\
+$nodejs\
+$rust\
+$golang\
+$docker_context\
+$time\
+$status
+$character"""
+
+[character]
+success_symbol = "[❯](#d384d3)"
+error_symbol = "[✗](#ec6e9f)"
+
+[directory]
+style = "bold #75c8d3"
+truncation_length = 4
+truncate_to_repo = false
+
+[git_branch]
+symbol = "🌿 "
+style = "bold #9ed788"
+format = "[ on ](#5c5478)[$symbol$branch](#9ed788)"
+
+[git_status]
+style = "bold #ec6e9f"
+format = "([$all_status$ahead_behind]($style))"
+
+[time]
+disabled = false
+format = " [[$time]](#fdbb68)"
+time_format = "%H:%M:%S"
+
+[username]
+show_always = true
+style_user = "bold #d384d8"
+style_root = "bold #ec6e9f"
+format = "[$user]($style)"
+
+[hostname]
+ssh_only = false
+format = "[ at ](#5c5478)[$hostname](#84bae9)"
+
+[python]
+symbol = "🐍 "
+format = " [${symbol}${pyenv_prefix}(${version} )]($style)"
+style = "bold #fdbb68"
+
+[nodejs]
+symbol = "⬢ "
+format = " [${symbol}(${version} )]($style)"
+style = "bold #9ed788"
+
+[rust]
+symbol = "🦀 "
+format = " [${symbol}(${version} )]($style)"
+style = "bold #fe9539"
+
+[docker_context]
+symbol = "🐳 "
+format = " [${symbol}$context]($style)"
+style = "bold #84bae9"

@@ -1,0 +1,34 @@
+# ==============================================================================
+# DevSpace Cosmic Theme for Alacritty
+# ==============================================================================
+[colors.primary]
+background = "#120d22"
+foreground = "#f1f5f9"
+
+[colors.cursor]
+text = "#120d22"
+cursor = "#a855f7"
+
+[colors.selection]
+text = "#ffffff"
+background = "#5b4b8a"
+
+[colors.normal]
+black = "#1a1b20"
+red = "#ec6e9f"
+green = "#9ed788"
+yellow = "#fdbb68"
+blue = "#84bae9"
+magenta = "#d384d8"
+cyan = "#75c8d3"
+white = "#d3c8d3"
+
+[colors.bright]
+black = "#46484f"
+red = "#ec6e9f"
+green = "#9ed788"
+yellow = "#fdbb68"
+blue = "#84bae9"
+magenta = "#d384d8"
+cyan = "#75c8d3"
+white = "#f2f2f2"

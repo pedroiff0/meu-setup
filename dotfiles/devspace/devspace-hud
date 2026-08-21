@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# ==============================================================================
+# Toggle or Restart DevSpace Hardware HUD
+# ==============================================================================
+
+if pgrep -f devspace-desktop-hud.py >/dev/null; then
+    pkill -f devspace-desktop-hud.py
+    echo "HUD ocultado."
+else
+    XAUTH=$(ls /run/user/1000/.mutter-Xwaylandauth.* 2>/dev/null | head -n 1)
+    [ -z "$XAUTH" ] && XAUTH="$HOME/.Xauthority"
+    export XAUTHORITY="$XAUTH"
+    export DISPLAY=":0"
+    export WAYLAND_DISPLAY="wayland-0"
+    python3 /home/pedro/.local/bin/devspace-desktop-hud.py >/dev/null 2>&1 &
+    echo "HUD exibido no canto da tela."
+fi
