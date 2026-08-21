@@ -1,0 +1,90 @@
+/* ==============================================================================
+ * DevSpace Cosmic Dark Theme — Mozilla Firefox Content (userContent.css)
+ * Customização das páginas internas: about:newtab, about:home, about:preferences
+ * ============================================================================== */
+
+@-moz-document url("about:home"), url("about:newtab"), url("about:blank") {
+  body, #root {
+    background: radial-gradient(circle at 50% 15%, #1e1b34 0%, #120d22 75%) !important;
+    background-color: #120d22 !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Logo e Wordmark */
+  .logo-and-wordmark .wordmark {
+    fill: #bd72c1 !important;
+  }
+
+  /* Barra de pesquisa da New Tab */
+  .search-inner-wrapper,
+  .search-wrapper .search-inner-wrapper {
+    background-color: #1e1b34 !important;
+    border: 1px solid #332f52 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+    transition: all 0.25s ease !important;
+  }
+
+  .search-inner-wrapper:hover,
+  .search-inner-wrapper:focus-within {
+    border-color: #a855f7 !important;
+    box-shadow: 0 0 0 1px #a855f7, 0 0 20px rgba(168, 85, 247, 0.3) !important;
+  }
+
+  .search-handoff-button {
+    background-color: transparent !important;
+    color: #f1f5f9 !important;
+  }
+
+  /* Cards de Top Sites / Shortcuts */
+  .top-site-outer .tile {
+    background-color: #1e1b34 !important;
+    border: 1px solid #332f52 !important;
+    border-radius: 12px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .top-site-outer:hover .tile {
+    background-color: #2c254d !important;
+    border-color: #a855f7 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 12px rgba(168, 85, 247, 0.25) !important;
+  }
+
+  .top-site-outer .title {
+    color: #d3c8d3 !important;
+    font-weight: 500 !important;
+  }
+
+  /* Seção de Destaques / Pocket Cards */
+  .ds-card-grid .ds-card {
+    background-color: #1e1b34 !important;
+    border: 1px solid #332f52 !important;
+    border-radius: 12px !important;
+  }
+
+  .ds-card-grid .ds-card:hover {
+    border-color: #a855f7 !important;
+    box-shadow: 0 6px 20px rgba(168, 85, 247, 0.2) !important;
+  }
+}
+
+/* Páginas de Configurações e Addons */
+@-moz-document url-prefix("about:preferences"), url-prefix("about:addons"), url-prefix("about:config") {
+  :root {
+    --in-content-page-background: #120d22 !important;
+    --in-content-box-background: #1e1b34 !important;
+    --in-content-box-border-color: #332f52 !important;
+    --in-content-text-color: #f1f5f9 !important;
+    --in-content-primary-button-background: #7c3aed !important;
+    --in-content-primary-button-background-hover: #a855f7 !important;
+    --in-content-focus-outline-color: #a855f7 !important;
+  }
+}
+
+/* Scrollbars Cósmicas Universais */
+* {
+  scrollbar-width: thin !important;
+  scrollbar-color: #5b4b8a #120d22 !important;
+}

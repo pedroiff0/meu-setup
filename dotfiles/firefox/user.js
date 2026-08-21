@@ -1,0 +1,10 @@
+user_pref("browser.theme.dark-private-windows", true);
+user_pref("browser.theme.toolbar-theme", 0);
+user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
+user_pref("browser.tabs.inTitlebar", 1);
+user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
+user_pref("svg.context-properties.content.enabled", true);
+user_pref("layout.css.color-mix.enabled", true);
+user_pref("general.smoothScroll", true);
+user_pref("browser.startup.page", 3);
+user_pref("widget.gtk.rounded-bottom-corners.enabled", true);

@@ -56,3 +56,23 @@ Gerado por `tools/gen.py` a partir de `packages.yaml`.
 | **playonlinux** | Frontend para o Wine | compat, linux-only | `playonlinux` | `—` | `—` |
 | **hermes-agent** | Agente Hermes (Nous Research) | ia, cli | `script` | `—` | `pipx` |
 | **claude-code** | CLI de codificação da Anthropic | ia, cli, dev | `script` | `—` | `node` |
+| **fzf** | Fuzzy finder interativo para linha de comando | cli, base, dev | `fzf` | `junegunn.fzf` | `fzf` |
+| **bat** | Substituto moderno do cat com realce de sintaxe e git | cli, dev | `bat` | `sharkdp.bat` | `bat` |
+| **eza** | Substituto moderno do ls com ícones, cores e árvore | cli, dev | `eza` | `eza-community.eza` | `eza` |
+| **zoxide** | Substituto inteligente do comando cd com memória de diretórios | cli, dev | `zoxide` | `ajeetdsouza.zoxide` | `zoxide` |
+| **git-delta** | Visualizador moderno de diffs do git com sintaxe e cores | dev, cli | `git-delta` | `dandavison.delta` | `git-delta` |
+| **lazygit** | Interface TUI interativa para gerenciamento do Git | dev, cli | `lazygit` | `JesseDuffield.lazygit` | `lazygit` |
+| **lazydocker** | Interface TUI interativa para Docker e Docker Compose | dev, infra, cli | `script` | `JesseDuffield.lazydocker` | `lazydocker` |
+| **yazi** | Gerenciador de arquivos para terminal rápido em Rust | cli, arquivos | `script` | `sxyazi.yazi` | `yazi` |
+| **glances** | Monitor de recursos do sistema e hardware no terminal e web | sysadmin, cli | `glances` | `NicolasHennion.Glances` | `glances` |
+| **ctop** | Monitor de métricas em tempo real para contêineres Docker | sysadmin, infra, cli | `script` | `—` | `ctop` |
+| **dive** | Analisador visual de camadas e tamanho de imagens Docker | dev, infra, cli | `script` | `wagoodman.dive` | `dive` |
+| **ncdu** | Analisador interativo de uso de espaço em disco no terminal | sysadmin, cli | `ncdu` | `YoranGrumich.ncdu` | `ncdu` |
+| **gping** | Ping com gráfico de latência em tempo real no terminal | rede, cli | `gping` | `orf.gping` | `gping` |
+| **tealdeer** | Implementação rápida em Rust do tldr com exemplos de comandos | cli, base | `tealdeer` | `dbrgn.tealdeer` | `tealdeer` |
+| **duf** | Visualizador amigável de partições e uso de disco | sysadmin, cli | `duf` | `muesli.duf` | `duf` |
+| **fastfetch** | Exibição elegante de informações do sistema no terminal | cli, desktop | `fastfetch` | `Fastfetch-cli.Fastfetch` | `fastfetch` |
+| **filebrowser** | Gerenciador de arquivos web leve para servidores e desktops | infra, arquivos | `script` | `FileBrowser.FileBrowser` | `filebrowser` |
+| **ntfy** | Cliente e servidor de notificações push para scripts e alertas | infra, cli | `script` | `—` | `ntfy` |
+| **zerotier-one** | Rede VPN mesh privada para comunicação ponto a ponto | rede, infra | `script` | `ZeroTier.ZeroTierOne` | `zerotier-one` |
+| **adguardhome** | DNS Sinkhole e bloqueador de anúncios para rede inteira em Docker | rede, security, infra | `script` | `—` | `adguardhome` |

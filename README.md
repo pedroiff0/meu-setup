@@ -69,8 +69,10 @@ Instala o Homebrew se faltar, depois formulas e casks.
 ## Estrutura
 
 ```
-packages.yaml        <- FONTE DE VERDADE: todos os programas
+packages.yaml        <- FONTE DE VERDADE: todos os programas (72+ apps)
 INVENTARIO.md        <- tabela gerada (Linux/Windows/macOS lado a lado)
+dotfiles/            <- configurações e temas (DevSpace, Firefox, Tmux, Sysctl, Docker)
+scripts/             <- instaladores de temas, terminal, Firefox e otimizações 24/7
 linux/
   bootstrap.sh       <- entrada pós-formatação (curl | bash)
   install.py         <- instalador multi-distro
@@ -80,7 +82,27 @@ macos/
   install.sh         <- GERADO por tools/gen.py (brew)
 tools/
   gen.py             <- regenera windows/, macos/ e INVENTARIO.md
+  verify.sh          <- suite de testes e validação
 ```
+
+---
+
+## Estilização & Personalização (DevSpace / Servidor 24/7)
+
+Para aplicar os temas visuais, a statusline com telemetria nativa do Antigravity, o tema do Firefox e as otimizações de rede do servidor:
+
+```bash
+# Aplicar tudo de uma vez
+bash scripts/apply-all.sh
+
+# Ou individualmente:
+bash scripts/apply-devspace-terminal.sh  # Tema DevSpace, prompt, statusline e aliases
+bash scripts/apply-firefox-theme.sh      # Tema DevSpace Cósmico no Firefox (userChrome.css)
+bash scripts/apply-tmux-theme.sh         # Tema DevSpace no Tmux com separador ●
+bash scripts/setup-server-optimizations.sh # TCP BBR + FQ, Anti-Sleep e Docker Data-Root
+bash scripts/setup-adguard.sh            # Iniciar AdGuard Home (DNS Sinkhole)
+```
+
 
 ## Adicionando um programa novo
 

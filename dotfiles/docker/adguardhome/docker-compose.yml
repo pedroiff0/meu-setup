@@ -1,0 +1,17 @@
+services:
+  adguardhome:
+    image: adguard/adguardhome:latest
+    container_name: adguardhome
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "3000:3000/tcp"   # Setup inicial (wizard)
+      - "8085:80/tcp"     # Painel Web após setup
+      - "853:853/tcp"     # DNS-over-TLS
+      - "784:784/udp"     # DNS-over-QUIC
+    volumes:
+      - ./work:/opt/adguardhome/work
+      - ./conf:/opt/adguardhome/conf
+    environment:
+      - TZ=America/Sao_Paulo
