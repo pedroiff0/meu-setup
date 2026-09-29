@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Validate Scripts & YAML Manifests
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate Shell Scripts
+        run: |
+          bash -n install.sh
+          if [ -f linux/install.sh ]; then bash -n linux/install.sh; fi
+          if [ -f macos/install.sh ]; then bash -n macos/install.sh; fi
+          echo "Scripts de shell validados com sucesso."
+
+      - name: Validate packages.yaml
+        run: |
+          python3 -c "import yaml; yaml.safe_load(open('packages.yaml'))"
+          echo "packages.yaml validado com sucesso."

@@ -1,6 +1,6 @@
 # 📦 Catálogo Completo de Pacotes & Ferramentas
 
-Este documento cataloga todos os **117 programas e utilitários** do `meu-setup`.
+Este documento cataloga todos os **123 programas e utilitários** do `meu-setup`.
 Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packages.yaml).
 
 ## 📑 Índice por Categorias
@@ -8,22 +8,23 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 - [ACADEMIC (6 apps)](#academic)
 - [ARQUIVOS (7 apps)](#arquivos)
 - [BASE (17 apps)](#base)
-- [CLI (64 apps)](#cli)
+- [CLI (66 apps)](#cli)
 - [COMPAT (3 apps)](#compat)
 - [COMUNICACAO (3 apps)](#comunicacao)
 - [CREATIVE (4 apps)](#creative)
 - [DATABASE (5 apps)](#database)
 - [DESIGN (2 apps)](#design)
-- [DESKTOP (11 apps)](#desktop)
-- [DEV (37 apps)](#dev)
+- [DESKTOP (15 apps)](#desktop)
+- [DEV (41 apps)](#dev)
 - [DRIVER (1 apps)](#driver)
 - [ENERGIA (3 apps)](#energia)
 - [ESCRITORIO (9 apps)](#escritorio)
 - [FONTES (2 apps)](#fontes)
 - [GPU (3 apps)](#gpu)
-- [IA (6 apps)](#ia)
+- [IA (10 apps)](#ia)
 - [INFRA (15 apps)](#infra)
-- [JS (4 apps)](#js)
+- [JOGOS (1 apps)](#jogos)
+- [JS (5 apps)](#js)
 - [LATEX (4 apps)](#latex)
 - [LINUX-ONLY (5 apps)](#linux-only)
 - [MIDIA (6 apps)](#midia)
@@ -31,7 +32,8 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 - [NAVEGADOR (4 apps)](#navegador)
 - [NOTAS (2 apps)](#notas)
 - [PDF (2 apps)](#pdf)
-- [PRODUTIVIDADE (3 apps)](#produtividade)
+- [PERFORMANCE (1 apps)](#performance)
+- [PRODUTIVIDADE (4 apps)](#produtividade)
 - [PYTHON (5 apps)](#python)
 - [REDE (15 apps)](#rede)
 - [SECURITY (7 apps)](#security)
@@ -94,6 +96,7 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **btop** | Monitor de recursos e hardware estético com gráficos | `btop` | `aristocratos.btop4win` | `btop` |
 | **bun** | Runtime JavaScript & TypeScript tudo-em-um ultra-rápido | `script` | `Oven-sh.Bun` | `oven-sh/bun/bun` |
 | **claude-code** | Ferramenta CLI de codificação agêntica da Anthropic no terminal | `script` | `—` | `node` |
+| **codex-cli** | CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal | `script` | `—` | `node` |
 | **ctop** | Monitor de métricas e recursos de contêineres Docker em tempo real | `script` | `—` | `ctop` |
 | **curl** | Transferência HTTP/HTTPS na linha de comando | `curl` | `cURL.cURL` | `curl` |
 | **dive** | Analisador de camadas e eficiência de tamanho de imagens Docker | `script` | `wagoodman.dive` | `dive` |
@@ -105,6 +108,7 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **fd-find** | Alternativa simples, rápida e intuitiva ao find (fd) | `fd-find` | `sharkdp.fd` | `fd` |
 | **ffmpeg** | Conversão, streaming e processamento de áudio e vídeo | `ffmpeg` | `Gyan.FFmpeg` | `ffmpeg` |
 | **fzf** | Fuzzy finder interativo para histórico, arquivos e comandos | `fzf` | `junegunn.fzf` | `fzf` |
+| **gamemode** | Otimizador de desempenho sob demanda para jogos no Linux (Feral GameMode) | `gamemode` | `—` | `—` |
 | **gh** | GitHub CLI oficial para issues, PRs e repositórios | `gh` | `GitHub.cli` | `gh` |
 | **ghostscript** | Interpretador para PostScript e motor de processamento PDF | `ghostscript` | `—` | `ghostscript` |
 | **git** | Controle de versão distribuído | `git` | `Git.Git` | `git` |
@@ -201,6 +205,8 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | Pacote | Descrição | Linux | Windows | macOS |
 |---|---|---|---|---|
 | **alacritty** | Emulador de terminal acelerado por GPU com foco em performance | `alacritty` | `Alacritty.Alacritty` | `alacritty` |
+| **chatgpt** | Aplicativo desktop nativo oficial do ChatGPT (OpenAI) | `chatgpt` | `OpenAI.ChatGPT` | `chatgpt` |
+| **cursor** | Editor de código avançado baseado em IA com Composer e modelos de ponta | `—` | `Anysphere.Cursor` | `cursor` |
 | **fastfetch** | Informações elegantes do sistema e hardware no terminal | `fastfetch` | `Fastfetch-cli.Fastfetch` | `fastfetch` |
 | **fonts** | Coleção de fontes essenciais (Inter, JetBrains Mono, Liberation, Noto Emoji) | `fonts-inter fonts-jetbrains-mono fonts-liberation fonts-noto-color-emoji fonts-freefont-ttf` | `—` | `—` |
 | **kde-plasma-desktop** | Ambiente de desktop completo e personalizável KDE Plasma 6 | `kde-plasma-desktop` | `—` | `—` |
@@ -211,6 +217,8 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **qt-style-kvantum** | Motor de temas baseado em SVG para aplicativos Qt/KDE | `qt-style-kvantum` | `—` | `—` |
 | **sddm** | Gerenciador de display e login moderno para KDE | `sddm` | `—` | `—` |
 | **starship** | Prompt customizável e rápido para qualquer shell (Bash, Zsh, PowerShell) | `script` | `Starship.Starship` | `starship` |
+| **vscode** | Editor de código fonte leve, extensível e poderoso da Microsoft | `code` | `Microsoft.VisualStudioCode` | `visual-studio-code` |
+| **windsurf** | IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade | `—` | `Codeium.Windsurf` | `windsurf` |
 
 ## DEV
 
@@ -221,7 +229,9 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **build-essential** | Compiladores e headers de C/C++ (gcc, g++, make) | `build-essential` | `—` | `—` |
 | **bun** | Runtime JavaScript & TypeScript tudo-em-um ultra-rápido | `script` | `Oven-sh.Bun` | `oven-sh/bun/bun` |
 | **claude-code** | Ferramenta CLI de codificação agêntica da Anthropic no terminal | `script` | `—` | `node` |
+| **codex-cli** | CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal | `script` | `—` | `node` |
 | **cuda-keyring** | Repositório oficial CUDA da NVIDIA para Debian/Ubuntu | `cuda-keyring` | `—` | `—` |
+| **cursor** | Editor de código avançado baseado em IA com Composer e modelos de ponta | `—` | `Anysphere.Cursor` | `cursor` |
 | **dbeaver** | Ferramenta universal de administração de bancos de dados SQL/NoSQL | `dbeaver-ce` | `dbeaver.dbeaver` | `dbeaver-community` |
 | **dive** | Analisador de camadas e eficiência de tamanho de imagens Docker | `script` | `wagoodman.dive` | `dive` |
 | **docker** | Plataforma líder de contêineres e virtualização leve | `docker.io` | `Docker.DockerDesktop` | `docker` |
@@ -252,6 +262,8 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **sqlite3** | Mecanismo de banco de dados SQL embutido e CLI interativo | `sqlite3` | `SQLite.SQLite` | `sqlite` |
 | **tmux** | Multiplexador de terminal com sessões persistentes | `tmux` | `—` | `tmux` |
 | **uv** | Gerenciador de pacotes e projetos Python ultra-rápido em Rust | `script` | `astral-sh.uv` | `uv` |
+| **vscode** | Editor de código fonte leve, extensível e poderoso da Microsoft | `code` | `Microsoft.VisualStudioCode` | `visual-studio-code` |
+| **windsurf** | IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade | `—` | `Codeium.Windsurf` | `windsurf` |
 | **zoxide** | Navegação rápida de diretórios aprendendo seus hábitos mais comuns (z) | `zoxide` | `ajeetdsouza.zoxide` | `zoxide` |
 
 ## DRIVER
@@ -302,11 +314,15 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | Pacote | Descrição | Linux | Windows | macOS |
 |---|---|---|---|---|
 | **antigravity-cli** | Google Antigravity CLI oficial para agentes autônomos | `script` | `—` | `agy` |
+| **chatgpt** | Aplicativo desktop nativo oficial do ChatGPT (OpenAI) | `chatgpt` | `OpenAI.ChatGPT` | `chatgpt` |
 | **claude-code** | Ferramenta CLI de codificação agêntica da Anthropic no terminal | `script` | `—` | `node` |
+| **codex-cli** | CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal | `script` | `—` | `node` |
 | **cuda-keyring** | Repositório oficial CUDA da NVIDIA para Debian/Ubuntu | `cuda-keyring` | `—` | `—` |
+| **cursor** | Editor de código avançado baseado em IA com Composer e modelos de ponta | `—` | `Anysphere.Cursor` | `cursor` |
 | **hermes-agent** | Agente de IA autônomo com suporte a skills canônicas (Nous Research) | `script` | `—` | `pipx` |
 | **ollama** | Execução local de modelos de IA e LLMs (Llama, DeepSeek, Qwen) | `script` | `Ollama.Ollama` | `ollama` |
 | **open-webui** | Interface web interativa para Ollama e modelos locais de IA | `script` | `—` | `—` |
+| **windsurf** | IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade | `—` | `Codeium.Windsurf` | `windsurf` |
 
 ## INFRA
 
@@ -328,12 +344,19 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **tailscale** | VPN Mesh privada segura baseada em WireGuard sem configuração | `script` | `tailscale.tailscale` | `tailscale` |
 | **zerotier-one** | Rede privada virtual P2P para comunicação entre dispositivos | `script` | `ZeroTier.ZeroTierOne` | `zerotier-one` |
 
+## JOGOS
+
+| Pacote | Descrição | Linux | Windows | macOS |
+|---|---|---|---|---|
+| **gamemode** | Otimizador de desempenho sob demanda para jogos no Linux (Feral GameMode) | `gamemode` | `—` | `—` |
+
 ## JS
 
 | Pacote | Descrição | Linux | Windows | macOS |
 |---|---|---|---|---|
 | **bun** | Runtime JavaScript & TypeScript tudo-em-um ultra-rápido | `script` | `Oven-sh.Bun` | `oven-sh/bun/bun` |
 | **claude-code** | Ferramenta CLI de codificação agêntica da Anthropic no terminal | `script` | `—` | `node` |
+| **codex-cli** | CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal | `script` | `—` | `node` |
 | **nodejs** | Runtime JavaScript via NVM (Node Version Manager LTS) | `script` | `OpenJS.NodeJS.LTS` | `node` |
 | **pnpm** | Gerenciador de pacotes JavaScript rápido e com economia de espaço | `script` | `pnpm.pnpm` | `pnpm` |
 
@@ -407,10 +430,17 @@ Gerado automaticamente por `tools/gen.py` a partir de [`packages.yaml`](../packa
 | **ghostscript** | Interpretador para PostScript e motor de processamento PDF | `ghostscript` | `—` | `ghostscript` |
 | **poppler-utils** | Utilitários para extração e manipulação de arquivos PDF (pdftotext) | `poppler-utils` | `—` | `poppler` |
 
+## PERFORMANCE
+
+| Pacote | Descrição | Linux | Windows | macOS |
+|---|---|---|---|---|
+| **gamemode** | Otimizador de desempenho sob demanda para jogos no Linux (Feral GameMode) | `gamemode` | `—` | `—` |
+
 ## PRODUTIVIDADE
 
 | Pacote | Descrição | Linux | Windows | macOS |
 |---|---|---|---|---|
+| **chatgpt** | Aplicativo desktop nativo oficial do ChatGPT (OpenAI) | `chatgpt` | `OpenAI.ChatGPT` | `chatgpt` |
 | **libreoffice** | Suíte de produtividade para documentos, planilhas e apresentações | `libreoffice` | `TheDocumentFoundation.LibreOffice` | `libreoffice` |
 | **obsidian** | Aplicativo de notas e base de conhecimento em Markdown | `obsidian` | `Obsidian.Obsidian` | `obsidian` |
 | **onlyoffice** | Suíte de escritório compatível com formatos Microsoft Office | `onlyoffice-desktopeditors` | `ONLYOFFICE.DesktopEditors` | `onlyoffice` |

@@ -77,6 +77,7 @@ install_formula "starship" "starship" "Prompt customizável e rápido para qualq
 install_formula "pipx" "hermes-agent" "Agente de IA autônomo com suporte a skills canônicas (Nous Research)"
 install_formula "node" "claude-code" "Ferramenta CLI de codificação agêntica da Anthropic no terminal"
 install_formula "agy" "antigravity-cli" "Google Antigravity CLI oficial para agentes autônomos"
+install_formula "node" "codex-cli" "CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal"
 install_formula "fzf" "fzf" "Fuzzy finder interativo para histórico, arquivos e comandos"
 install_formula "bat" "bat" "Visualizador moderno de arquivos com sintaxe e integração Git"
 install_formula "eza" "eza" "Substituto moderno para ls com ícones, cores, git e visão de árvore"
@@ -123,6 +124,10 @@ install_cask "dbeaver-community" "dbeaver" "Ferramenta universal de administraç
 install_cask "alacritty" "alacritty" "Emulador de terminal acelerado por GPU com foco em performance"
 install_cask "kitty" "kitty" "Emulador de terminal rápido e extensível baseado em GPU"
 install_cask "font-jetbrains-mono-nerd-font" "nerd-fonts" "Fontes com glifos e ícones de desenvolvedor para terminal (JetBrains Mono NF)"
+install_cask "chatgpt" "chatgpt" "Aplicativo desktop nativo oficial do ChatGPT (OpenAI)"
+install_cask "visual-studio-code" "vscode" "Editor de código fonte leve, extensível e poderoso da Microsoft"
+install_cask "cursor" "cursor" "Editor de código avançado baseado em IA com Composer e modelos de ponta"
+install_cask "windsurf" "windsurf" "IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade"
 install_cask "zerotier-one" "zerotier-one" "Rede privada virtual P2P para comunicação entre dispositivos"
 
 echo "Concluido com sucesso!"

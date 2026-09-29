@@ -1157,6 +1157,70 @@ packages:
     script: curl -fsSL https://antigravity.google/install.sh | bash 2>/dev/null || echo "Antigravity CLI installed in local environment"
   macos:
     brew: agy
+- name: codex-cli
+  desc: CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal
+  tags:
+  - ia
+  - js
+  - cli
+  - dev
+  linux:
+    script: npm install -g @openai/codex
+  macos:
+    brew: node
+- name: chatgpt
+  desc: Aplicativo desktop nativo oficial do ChatGPT (OpenAI)
+  tags:
+  - ia
+  - desktop
+  - produtividade
+  linux:
+    apt: chatgpt
+  windows: OpenAI.ChatGPT
+  macos:
+    cask: chatgpt
+- name: vscode
+  desc: Editor de código fonte leve, extensível e poderoso da Microsoft
+  tags:
+  - dev
+  - desktop
+  linux:
+    apt: code
+    dnf: code
+    pacman: code
+    repo:
+      apt: "curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo dd of=/usr/share/keyrings/packages.microsoft.gpg\nsudo chmod go+r /usr/share/keyrings/packages.microsoft.gpg\necho \"deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main\" | sudo tee /etc/apt/sources.list.d/vscode.list >/dev/null\n"
+  windows: Microsoft.VisualStudioCode
+  macos:
+    cask: visual-studio-code
+- name: cursor
+  desc: Editor de código avançado baseado em IA com Composer e modelos de ponta
+  tags:
+  - dev
+  - desktop
+  - ia
+  windows: Anysphere.Cursor
+  macos:
+    cask: cursor
+- name: windsurf
+  desc: IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade
+  tags:
+  - dev
+  - desktop
+  - ia
+  windows: Codeium.Windsurf
+  macos:
+    cask: windsurf
+- name: gamemode
+  desc: Otimizador de desempenho sob demanda para jogos no Linux (Feral GameMode)
+  tags:
+  - jogos
+  - performance
+  - cli
+  linux:
+    apt: gamemode
+    dnf: gamemode
+    pacman: gamemode
 - name: fzf
   desc: Fuzzy finder interativo para histórico, arquivos e comandos
   tags:

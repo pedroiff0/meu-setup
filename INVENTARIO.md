@@ -101,6 +101,12 @@ Gerado por `tools/gen.py` a partir de `packages.yaml`.
 | **hermes-agent** | Agente de IA autônomo com suporte a skills canônicas (Nous Research) | ia, python, cli, dev | `script` | `—` | `pipx` |
 | **claude-code** | Ferramenta CLI de codificação agêntica da Anthropic no terminal | ia, js, cli, dev | `script` | `—` | `node` |
 | **antigravity-cli** | Google Antigravity CLI oficial para agentes autônomos | ia, cli, dev | `script` | `—` | `agy` |
+| **codex-cli** | CLI oficial do OpenAI Codex para agentes autônomos e execução de código no terminal | ia, js, cli, dev | `script` | `—` | `node` |
+| **chatgpt** | Aplicativo desktop nativo oficial do ChatGPT (OpenAI) | ia, desktop, produtividade | `chatgpt` | `OpenAI.ChatGPT` | `chatgpt` |
+| **vscode** | Editor de código fonte leve, extensível e poderoso da Microsoft | dev, desktop | `code` | `Microsoft.VisualStudioCode` | `visual-studio-code` |
+| **cursor** | Editor de código avançado baseado em IA com Composer e modelos de ponta | dev, desktop, ia | `—` | `Anysphere.Cursor` | `cursor` |
+| **windsurf** | IDE de IA agêntica da Codeium com arquitetura de fluxos Cascade | dev, desktop, ia | `—` | `Codeium.Windsurf` | `windsurf` |
+| **gamemode** | Otimizador de desempenho sob demanda para jogos no Linux (Feral GameMode) | jogos, performance, cli | `gamemode` | `—` | `—` |
 | **fzf** | Fuzzy finder interativo para histórico, arquivos e comandos | cli, base, dev | `fzf` | `junegunn.fzf` | `fzf` |
 | **bat** | Visualizador moderno de arquivos com sintaxe e integração Git | cli, dev | `bat` | `sharkdp.bat` | `bat` |
 | **eza** | Substituto moderno para ls com ícones, cores, git e visão de árvore | cli, dev | `eza` | `eza-community.eza` | `eza` |
