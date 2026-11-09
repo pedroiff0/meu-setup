@@ -33,6 +33,9 @@ jobs:
           if [ -f macos/install.sh ]; then bash -n macos/install.sh; fi
           echo "Scripts de shell validados com sucesso."
 
+      - name: Install PyYAML
+        run: pip install pyyaml
+
       - name: Validate packages.yaml
         run: |
           python3 -c "import yaml; yaml.safe_load(open('packages.yaml'))"
