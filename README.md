@@ -157,6 +157,8 @@ Dúvidas e pedidos de ajuda: veja [SUPPORT.md](SUPPORT.md).
 
 [![Commits por mês](https://img.shields.io/github/commit-activity/m/pedroiff0/meu-setup?logo=github)](https://github.com/pedroiff0/meu-setup/graphs/commit-activity) [![Último commit](https://img.shields.io/github/last-commit/pedroiff0/meu-setup?logo=git&logoColor=white)](https://github.com/pedroiff0/meu-setup/commits) [![Issues](https://img.shields.io/github/issues/pedroiff0/meu-setup)](https://github.com/pedroiff0/meu-setup/issues) [![Pull requests](https://img.shields.io/github/issues-pr/pedroiff0/meu-setup)](https://github.com/pedroiff0/meu-setup/pulls)
 
+<div align="center">
+
 ## Autor
 
 <table>
@@ -168,6 +170,8 @@ Dúvidas e pedidos de ajuda: veja [SUPPORT.md](SUPPORT.md).
 ### Contribuidores
 
 [![Contribuidores](https://contrib.rocks/image?repo=pedroiff0/meu-setup)](https://github.com/pedroiff0/meu-setup/graphs/contributors)
+
+</div>
 
 ## Licença
 
