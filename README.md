@@ -18,7 +18,7 @@ Este projeto faz parte do [portfólio](https://portfolio.phrandrade.com/#meu-set
 - [Trabalhando no projeto](#trabalhando-no-projeto)
 - [Status e próximos passos](#status-e-próximos-passos)
 - [Contribuindo e suporte](#contribuindo-e-suporte)
-- [Autores](#autores)
+- [Autor](#autor)
 - [Licença](#licença)
 
 ## Por que existe
@@ -136,7 +136,7 @@ Estado atual: **ativo** (versão 2.0.0). Linux é a plataforma mais testada; mac
 
 Issues e pull requests são bem-vindos: veja [CONTRIBUTING.md](CONTRIBUTING.md), [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) e [SUPPORT.md](SUPPORT.md). Vulnerabilidades seguem [SECURITY.md](SECURITY.md).
 
-## Autores
+## Autor
 
 <table>
   <tr>
